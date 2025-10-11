@@ -25,6 +25,6 @@ jobs:
                   - name: "Upload to artifact to the action"
                     uses: actions/upload-pages-artifact@v3
                     with:
-                        path: ./frontend/build
+                        path: ./frontend/dist
                   - id: deployment
                     uses: actions/deploy-pages@v4
