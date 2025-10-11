@@ -19,10 +19,14 @@
 - Structure: 
    - Profressional photo
    - Brief narrative
+   - Beyond code (50-100 words)
    - Linkeding, GitHub, Email
    - Currently seeking S26 internships
+
+## Blog 
 
 # DESIGN
 - Style: sophisticaded minimalism -- dont be over creative
 - Animations: no more than 2 animations
 - Accessibility: mobile-ready
+- Actual component design: https://claude.ai/share/2e8969b4-7ffc-4d49-8ab1-5aa0b850484d
