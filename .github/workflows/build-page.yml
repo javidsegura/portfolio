@@ -1,0 +1,30 @@
+name: Build fronteng page and publish to github page
+on:
+      push:
+            branches: [ main ]
+
+permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+jobs:
+      deploy:
+            runs-on: ubuntu-latest
+            steps:
+                  # Set-up
+                  - name: "Checkout code"
+                    uses: actions/checkout@v4
+                  - name: "Setup Node"
+                    uses: actions/setup-node@v4
+                  - name: "Install dependencies"
+                    run: make install
+                  
+                  - name: "Build frontend"
+                    run: make build
+                  - name: "Upload to artifact to the action"
+                    uses: actions/upload-pages-artifact@v3
+                    with:
+                        path: ./frontend/build
+                  - id: deployment
+                    uses: actions/deploy-pages@v4
