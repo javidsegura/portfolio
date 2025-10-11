@@ -20,8 +20,11 @@ jobs:
                   - name: "Install dependencies"
                     run: make install
                   
+                  # Building frontend
                   - name: "Build frontend"
                     run: make build
+                  
+                  # Deploying artificat
                   - name: "Upload to artifact to the action"
                     uses: actions/upload-pages-artifact@v3
                     with:

@@ -8,3 +8,6 @@ run-local:
 
 build:
 	cd frontend && npm run build
+
+build-preview:
+	cd frontend && npm run build && npm run preview
