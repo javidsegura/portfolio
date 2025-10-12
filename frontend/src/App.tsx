@@ -1,15 +1,17 @@
-import profifilePic from "./assets/about-me/profile-pic.png"
+import { Routes, Route } from "react-router-dom"
+import AppLayout from "./layouts/appLayout"
+import HomePage from "./pages/HomePage"
 
 
 function App() {
 
   return (
-      <div className="flex w-screen h-screen">
-        <div id="hero-section" className="flex flex-col m-auto gap-2"> 
-          <img src={profifilePic} alt="Profile" width={300} height={300}/>
-          <p> Hellooo my name is Javer Domínguez Segura</p>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/portfolio" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route path="*" element={<p>404 error</p>} />
+      </Routes>
   )
 }
 

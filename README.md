@@ -30,3 +30,5 @@
 - Animations: no more than 2 animations
 - Accessibility: mobile-ready
 - Actual component design: https://claude.ai/share/2e8969b4-7ffc-4d49-8ab1-5aa0b850484d
+- Figma link: https://www.figma.com/design/eSxkqAPozDFbXGB33LBWfi/portfolio?node-id=1-2&t=qPPnDmC2jC53tpji-1
+- Animations with: https://animejs.com/
