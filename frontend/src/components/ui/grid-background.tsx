@@ -37,8 +37,8 @@ export default function GridBackground() {
             transition: "transform 0.3s ease-out",
             // Subtle professional grid using repeating gradients
             backgroundImage:
-              "linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px), " +
-              "linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(148, 163, 184, 0.09) 1px, transparent 1px), " +
+              "linear-gradient(to bottom, rgba(148, 163, 184, 0.09) 1px, transparent 1px)",
             backgroundSize: "36px 36px",
             backgroundPosition: "center top",
             backgroundRepeat: "repeat",
