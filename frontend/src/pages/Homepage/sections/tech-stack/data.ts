@@ -111,19 +111,19 @@ const HPC_FRAMEWORKS = [
 const BIG_DATA_FRAMEWORKS = [
       {
             name: "Apache Spark",
-            logo_url: "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"
+            logo_url: "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-icon.svg"
       },
       {
             name: "Apache Hadoop",
-            logo_url: "https://www.svgrepo.com/show/373541/cuda.svg"
+            logo_url: "https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-icon.svg"
       },
       {
             name: "Apache Kafka",
-            logo_url: "https://upload.wikimedia.org/wikipedia/commons/4/40/OpenMP_logo.svg"
+            logo_url: "https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-icon.svg"
       },
       {
             name: "BigQuery",
-            logo_url: "https://avatars.githubusercontent.com/u/14836989?s=200&v=4"
+            logo_url: "https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg"
       },
 ]
 
