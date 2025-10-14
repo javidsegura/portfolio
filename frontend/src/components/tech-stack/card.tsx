@@ -4,11 +4,11 @@
 
 import type { ComponentType } from "react";
 
-interface TechStackCardProps {
+interface TechStackCardProps { // FIX: Add this to notes
   TECHNOLOGIES_ELEMENTS: Array<{ name: string; logo_url: string }>;
   title: string;
   className?: string;
-  Icon: ComponentType;
+  Icon: ComponentType<{ style?: React.CSSProperties }>;
 }
 
 export default function TechStackCard({ TECHNOLOGIES_ELEMENTS, title, className, Icon }: TechStackCardProps){
