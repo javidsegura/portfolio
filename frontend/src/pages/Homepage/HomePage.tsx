@@ -6,12 +6,18 @@ import TechStack from "./sections/tech-stack/tech-stack";
 
 export default function HomePage(){
       return(
-            <>
-            <Landing />
-            <Projects />
-            <Experience />
-            <TechStack />
-            <About />
-            </>
+            <div className="flex flex-col">
+                  <Landing />
+                  <Projects />
+                  <Experience />
+                  <TechStack />
+                  <About />
+            </div>
       )
 }
+
+
+/*
+1. Move tasks out 
+2. 
+*/

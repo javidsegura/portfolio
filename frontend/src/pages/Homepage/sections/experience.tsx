@@ -1,9 +1,14 @@
+import HomePageSection from "@/components/homepage/section";
 
 
 export default function Experience(){
       return (
-            <div className="h-[100vh]" id="experience-section"> 
-                  <p> HIII THIS IS EXPERIENCE</p>
-            </div>
+            <HomePageSection 
+                  section_name="experience"
+                  title="Experience"
+                  description="My experience"
+            >
+                  <div> AAA</div>
+            </HomePageSection>
       )
 }
