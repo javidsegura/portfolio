@@ -1,3 +1,4 @@
+import Timeline from "@/components/homepage/experience/timeline";
 import HomePageSection from "@/components/homepage/section";
 
 
@@ -8,7 +9,7 @@ export default function Experience(){
                   title="Experience"
                   description="My experience"
             >
-                  <div> AAA</div>
+                  <Timeline />
             </HomePageSection>
       )
 }
