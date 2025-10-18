@@ -50,7 +50,7 @@ export default function NavBar(){
                               </HashLink>
                         ))}
                         {WEB_LINKS.map(( item, idx ) => (
-                              <p className='highlighted-text' key={idx} onClick={ () =>{
+                              <p className='highlighted-text cursor-pointer' key={idx} onClick={ () =>{
 
                                     window.open(item.link, "_blank")
                                     logEvent(analytics, "portfolio_medium_link_click")
