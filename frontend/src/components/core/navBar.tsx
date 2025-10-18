@@ -1,4 +1,6 @@
 import { HashLink } from 'react-router-hash-link';
+import { analytics } from '@/firebase';
+import { logEvent } from 'firebase/analytics';
 
 const SECTION_LINKS = [
       {
@@ -48,8 +50,12 @@ export default function NavBar(){
                               </HashLink>
                         ))}
                         {WEB_LINKS.map(( item, idx ) => (
-                              <p className='highlighted-text' key={idx} onClick={ () =>
+                              <p className='highlighted-text' key={idx} onClick={ () =>{
+
                                     window.open(item.link, "_blank")
+                                    logEvent(analytics, "portfolio_medium_link_click")
+
+                              }
                               }> {item.name}</p>
                         ))}
                         {FILES_LINKS.map(( item, idx ) => (
