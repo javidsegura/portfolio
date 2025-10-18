@@ -78,3 +78,5 @@ temp/
 .netlify
 .cache/
 
+
+.venv/*
