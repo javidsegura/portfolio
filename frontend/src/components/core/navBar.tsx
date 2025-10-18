@@ -17,11 +17,15 @@ const SECTION_LINKS = [
             "name": "About",
             "link": "/portfolio#about-section"
       },
+];
+
+const WEB_LINKS = [
       {
             "name": "Blog",
-            "link": ""
+            "link": "https://medium.com/@jdominguez.ieu2023"
       },
-];
+
+]
 
 const FILES_LINKS = [{
       "name": "[ Download CV ]",
@@ -41,6 +45,11 @@ export default function NavBar(){
                               <HashLink to={item.link} smooth key={idx}>
                                     <p className='highlighted-text'> {item.name}</p>
                               </HashLink>
+                        ))}
+                        {WEB_LINKS.map(( item, idx ) => (
+                              <p className='highlighted-text' key={idx} onClick={ () =>
+                                    window.open(item.link, "_blank")
+                              }> {item.name}</p>
                         ))}
                         {FILES_LINKS.map(( item, idx ) => (
                               <a href={item.link} download key={idx}>
