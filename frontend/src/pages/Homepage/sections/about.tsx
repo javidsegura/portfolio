@@ -1,10 +1,15 @@
 import HomePageSection from "@/components/homepage/section";
 import profilePic from "../../../assets/about-me/profile-pic.png"
+import { useSectionView } from '@/hooks/useAnalytics';
 
 
 export default function About(){
+      // Track when about section comes into view
+      const sectionRef = useSectionView("about");
+
       return (
             <HomePageSection
+                  ref={sectionRef}
                   section_name="about"
                   title="About Me"
                   description="Know me beyond coding and math"

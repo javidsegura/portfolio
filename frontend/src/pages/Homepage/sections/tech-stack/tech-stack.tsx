@@ -1,11 +1,16 @@
 import TechStackCard from "@/components/homepage/tech-stack/card";
 import { TECH_STACK_SECTIONS } from "./data";
 import HomePageSection from "@/components/homepage/section";
+import { useSectionView } from '@/hooks/useAnalytics';
 
 
 export default function TechStack(){
+      // Track when tech-stack section comes into view
+      const sectionRef = useSectionView("tech_stack");
+
       return (
             <HomePageSection 
+                  ref={sectionRef}
                   section_name="tech-stack"
                   title="Technical Knowledge"
                   description="Comprehensive toolkit spanning software engineering, machine learning, data analysis, and quantitative computing">
