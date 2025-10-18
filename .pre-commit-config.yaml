@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: build-check
         name: Build Check
-        entry: bash -c 'cd /Users/javierdominguezsegura/Programming/S25/interships && make build'
+        entry: make build
         language: system
         pass_filenames: false
         always_run: true
