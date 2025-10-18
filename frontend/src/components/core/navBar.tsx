@@ -32,6 +32,7 @@ const FILES_LINKS = [{
       "link": "/portfolio/Javier-Dominguez-CV.pdf"
 },]
 
+
 export default function NavBar(){
       return (
             <div className="flex flex-row px-6 py-4 top-3 sticky z-50 backdrop-blur-md bg-background/85 border-b border-border/50 shadow-sm transition-all duration-250 rounded-xs">
