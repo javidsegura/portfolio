@@ -1,5 +1,6 @@
 import Timeline from "@/components/homepage/experience/timeline";
 import HomePageSection from "@/components/homepage/section";
+import { EXPERIENCE_EVENTS } from "./data";
 
 
 export default function Experience(){
@@ -9,7 +10,9 @@ export default function Experience(){
                   title="Experience"
                   description="My experience"
             >
-                  <Timeline />
+                  <Timeline
+                        events={EXPERIENCE_EVENTS}
+                  />
             </HomePageSection>
       )
 }

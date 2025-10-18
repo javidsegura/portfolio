@@ -1,6 +1,7 @@
 .PHONY: run-local build install
 
 install: 
+	python3 -m venv .venv && pip3 install -r requirements.txt
 	cd frontend && npm install
 
 run-local:
