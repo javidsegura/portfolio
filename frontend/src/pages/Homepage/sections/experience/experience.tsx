@@ -13,7 +13,7 @@ export default function Experience(){
                   ref={sectionRef}
                   section_name="experience"
                   title="Experience"
-                  description="My experience"
+                  description="Dean's List recognition, NSF-funded HPC research, Silicon Valley selection, and entrepreneurial ventures."
             >
                   <Timeline
                         events={EXPERIENCE_EVENTS}
