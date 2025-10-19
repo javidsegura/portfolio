@@ -1,7 +1,7 @@
 repos:
   - repo: local
     hooks:
-      - id: build-check
+      - id: build-check # Useful to check github actions will run
         name: Build Check
         entry: make build
         language: system

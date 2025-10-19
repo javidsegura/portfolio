@@ -150,3 +150,10 @@
 .highlighted-text:hover::after {
   transform: scaleX(1);
 }
+
+.primary-button {
+  @apply text-white px-5 py-2 rounded-lg bg-black cursor-pointer
+}
+.secondary-button {
+  @apply text-black px-5 py-2 rounded-lg border-2 cursor-pointer
+}

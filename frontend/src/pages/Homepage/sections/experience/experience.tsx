@@ -5,7 +5,6 @@ import { useSectionView } from '@/hooks/useAnalytics';
 
 
 export default function Experience(){
-      // Track when experience section comes into view
       const sectionRef = useSectionView("experience");
 
       return (

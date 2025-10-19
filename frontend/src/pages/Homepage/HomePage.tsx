@@ -1,7 +1,7 @@
 import About from "./sections/about";
 import Experience from "./sections/experience/experience";
 import Landing from "./sections/landing";
-import Projects from "./sections/projects";
+import Projects from "./sections/projects/projects";
 import TechStack from "./sections/tech-stack/tech-stack";
 import { usePageView } from "@/hooks/useAnalytics";
 
