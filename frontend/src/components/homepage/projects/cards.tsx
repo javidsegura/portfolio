@@ -1,9 +1,18 @@
 import { FileText } from "lucide-react"
 
+// Write enum to notes
 export enum ProjectCategories {
+      All = "All",
       Cybersecurity = "Cybersecurity",
       Full_stack = "Full Stack", 
       Hardware = "Hardware"
+}
+export enum TechStackCategories {
+      All = "All",
+      Python = "Python",
+      C = "C",
+      MySQL = "MySQL", 
+      AWS = "AWS"
 }
 
 

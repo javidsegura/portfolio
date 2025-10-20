@@ -1,5 +1,5 @@
 import type { ProjectCardProps } from "@/components/homepage/projects/cards";
-import { ProjectCategories } from "@/components/homepage/projects/cards";
+import { ProjectCategories, TechStackCategories, } from "@/components/homepage/projects/cards";
 
 export const PROJECTS: Array<ProjectCardProps> = [
       {
@@ -9,7 +9,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Improved security by 95% and reduced authentication-related incidents to zero",
             role: "Lead Developer",
             date: "2023-2024",
-            techstack: ["React", "Node.js", "PostgreSQL", "JWT", "OAuth2"],
+            techstack: [TechStackCategories.AWS],
             hasPaper: true,
             paperLink: "https://example.com/paper1",
             deepDiveLink: "https://example.com/deepdive1",
@@ -22,7 +22,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Processed $2M+ in transactions and served 50,000+ customers",
             role: "Full Stack Developer",
             date: "2022-2023",
-            techstack: ["React", "Express.js", "MongoDB", "Stripe", "Docker"],
+            techstack: [TechStackCategories.MySQL],
             hasPaper: false,
             paperLink: "",
             deepDiveLink: "https://example.com/deepdive2",
@@ -35,7 +35,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Used by 500+ students in quantum computing courses",
             role: "Research Assistant",
             date: "2023",
-            techstack: ["Python", "NumPy", "Qiskit", "Jupyter"],
+            techstack: [TechStackCategories.MySQL],
             hasPaper: true,
             paperLink: "https://example.com/paper2",
             deepDiveLink: "https://example.com/deepdive3",
@@ -48,7 +48,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Used by 500+ students in quantum computing courses",
             role: "Research Assistant",
             date: "2023",
-            techstack: ["Python", "NumPy", "Qiskit", "Jupyter"],
+            techstack: [TechStackCategories.MySQL],
             hasPaper: true,
             paperLink: "https://example.com/paper2",
             deepDiveLink: "https://example.com/deepdive3",
@@ -61,7 +61,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Used by 500+ students in quantum computing courses",
             role: "Research Assistant",
             date: "2023",
-            techstack: ["Python", "NumPy", "Qiskit", "Jupyter"],
+            techstack: [TechStackCategories.Python],
             hasPaper: true,
             paperLink: "https://example.com/paper2",
             deepDiveLink: "https://example.com/deepdive3",
@@ -74,7 +74,7 @@ export const PROJECTS: Array<ProjectCardProps> = [
             impact: "Used by 500+ students in quantum computing courses",
             role: "Research Assistant",
             date: "2023",
-            techstack: ["Python", "NumPy", "Qiskit", "Jupyter"],
+            techstack: [TechStackCategories.MySQL],
             hasPaper: true,
             paperLink: "https://example.com/paper2",
             deepDiveLink: "https://example.com/deepdive3",

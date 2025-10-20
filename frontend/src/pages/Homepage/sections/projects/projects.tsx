@@ -4,190 +4,125 @@ import { PROJECTS } from './data';
 import ProjectCard, { type ProjectCardProps } from '@/components/homepage/projects/cards';
 import { useState } from 'react';
 import PopUpCard from '@/components/homepage/projects/popUpCard';
-
-const NUMBER_OF_PROJECTS_PER_GRID = 4;
-
+import PaginationControls from '@/components/homepage/projects/paginationControls';
+import { ProjectCategories, TechStackCategories } from '@/components/homepage/projects/cards';
 
 export default function Projects(){
       const sectionRef = useSectionView("projects");
       const [selectedProject, setSelectedProject] = useState<ProjectCardProps | null>(null);
+      const [selectedCategory, setSelectedCategory] = useState<string>("All");
+      const [selectedTechStack, setSelectedTechStack] = useState<string>("All");
+      const [showPapersOnly, setShowPapersOnly] = useState<boolean>(false);
       const [ page, setPage ] = useState<number>(0);
       
       // DOCS: how to add pagination 
+      const NUMBER_OF_PROJECTS_PER_GRID = 4;
       const totalPages = Math.ceil(PROJECTS.length / NUMBER_OF_PROJECTS_PER_GRID);
       const startIndex = page * NUMBER_OF_PROJECTS_PER_GRID;
       const endIndex = startIndex + NUMBER_OF_PROJECTS_PER_GRID;
+
+
+      // You can filter by having paper, technology stack or category // DOCS: Take notes on filters 
+      const filteredProjects = PROJECTS.filter( project => {
+            console.log("Project is", project)
+            const categoryMatch = project.category == selectedCategory || selectedCategory === "All";
+            const techMatch  = project.techstack.includes(selectedTechStack) || selectedTechStack === "All";
+            const paperMatch = project.hasPaper || !showPapersOnly
+            return categoryMatch && techMatch && paperMatch
+      })
+
+      let allProjectCategories: Array<string> = Object.values(ProjectCategories)
+      let allTechStackCategories: Array<string> = Object.values(TechStackCategories)
+
 
       return (
             <HomePageSection
                   ref={sectionRef}
                   section_name='projects'
-                  title='Projects'
-                  description='Work output'
+                  title='Selected Work & Impact'
+                  description='A showcase of data-driven solutions and engineering projects demonstrating technical depth, business impact, and analytical rigor.'
 
             >
-            <div className='flex flex-row flex-wrap gap-2 px-10 mb-3'> 
-                  {PROJECTS.slice(startIndex, endIndex).map((item, idx) => {
-                        return (
-                              <ProjectCard 
-                                    key={idx}
-                                    {...item}
-                                    onClick={() => {
-                                          setSelectedProject({...item});
-                                          console.log("I have just been clicked with idx", {...item})
-                                    }}
-                              />
-                        )
-                  })}
-            </div>
-            {/* Pagination Controls */}
-            <div className='flex flex-row gap-2 items-center justify-center mt-6'>
-                  {/* Previous Button */}
-                  <button 
-                        className={`px-4 py-2 rounded-lg transition-colors ${
-                              page === 0 
-                                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                        }`}
-                        onClick={() => setPage(Math.max(0, page - 1))}
-                        disabled={page === 0}
-                  >
-                        Previous
-                  </button>
-                  
-                  {/* Page Numbers */}
-                  <div className='flex gap-1'>
-                        {[...Array(totalPages)].map((_, i) => (
-                              <button
-                                    key={i}
-                                    className={`px-3 py-2 rounded-lg transition-colors cursor-pointer ${
-                                          page === i ? 'bg-gray-900 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  <div id="filtering-section" className='flex flex-col gap-2 px-10 mb-3'>
+                        <div id="area-filtering-section" className='mb-3'> 
+                              <p className='text-xs mb-2'>AREAS</p>
+                              <div className='flex flex-row gap-2'> 
+                                    {allProjectCategories.map((item, idx) => {
+                                          return (
+                                                <button key={idx} onClick={() => {
+                                                      setSelectedCategory(item)
+                                                }}
+                                                
+                                                className={` ${
+                                                      item === selectedCategory
+                                                            ? 'primary-button'
+                                                            : 'secondary-button'
+                                                
+                                                }`}>
+                                                      {item}</button>
+                                          )
+                                    })}
+                              </div>
+                        </div>
+                        <div id="tech-stack-filtering-section">
+                              <div className='flex flex-row items-end gap-4'> 
+                                    <label className='flex-1'>
+                                          <p className='text-sm mb-2'>TECHNOLOGY</p>
+                                          <select name="selectedTechStack"
+                                                className='border-2 rounded-lg p-2 w-full'
+                                                value={selectedTechStack}
+                                                onChange={e => setSelectedTechStack(e.target.value)}
+                                          >
+                                                {allTechStackCategories.map((item, idx) => {
+                                                      return (
+                                                            <option value={item} key={idx}>{item}</option>
+                                                      )
+                                                })}
+                                          </select>
+                                    </label>
+                              <button 
+                                    className={` ${
+                                          showPapersOnly
+                                                ? "primary-button" 
+                                                : "secondary-button"
                                     }`}
-                                    onClick={() => setPage(i)}
-                              >
-                                    {i + 1}
-                              </button>
-                        ))}
+                                    onClick={() => setShowPapersOnly(!showPapersOnly)}
+                                    >Include Paper Only</button>
+                              </div>
+                        </div>
+                  <p className='text-xs font-light px-2'> Showing {filteredProjects.length} out of {PROJECTS.length}</p>
                   </div>
-                  
-                  {/* Next Button */}
-                  <button 
-                        className={`px-4 py-2 rounded-lg transition-colors ${
-                              page === totalPages - 1 
-                                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                        }`}
-                        onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
-                        disabled={page === totalPages - 1}
-                  >
-                        Next
-                  </button>
-            </div>
-            
-
-            {/* FIX: add this to the docs */}
-            {selectedProject && (
-                  <PopUpCard 
-                        selectedProject={selectedProject}
-                        setSelectedProject={setSelectedProject}
+                  <div className='flex flex-row flex-wrap gap-2 px-10 mb-3'> 
+                        {filteredProjects.slice(startIndex, endIndex).map((item, idx) => {
+                              return (
+                                    <ProjectCard 
+                                          key={idx}
+                                          {...item}
+                                          onClick={() => {
+                                                setSelectedProject({...item});
+                                                console.log("I have just been clicked with idx", {...item})
+                                          }}
+                                    />
+                              )
+                        })}
+                  </div>
+                  <PaginationControls 
+                        page={page}
+                        totalPages={totalPages}
+                        setPage={setPage}
                   />
-            )}
+                  
+
+                  {/* FIX: add this to the docs */}
+                  {selectedProject && (
+                        <PopUpCard 
+                              selectedProject={selectedProject}
+                              setSelectedProject={setSelectedProject}
+                        />
+                  )}
                   
 
             </HomePageSection>
       )
 }
 
-
-//  {/* Modal */}
-//  {selectedProject && (
-//       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-//         <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-//           <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-start justify-between">
-//             <div>
-//               <h2 className="text-3xl font-bold text-gray-900 mb-2">
-//                 {selectedProject.title}
-//               </h2>
-//               <div className="text-sm text-gray-600">
-//                 {selectedProject.area} · {selectedProject.date}
-//               </div>
-//             </div>
-//             <button
-//               onClick={() => setSelectedProject(null)}
-//               className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-//             >
-//               <X className="w-6 h-6" />
-//             </button>
-//           </div>
-
-//           <div className="p-6 space-y-6">
-//             <div>
-//               <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-//                 Role
-//               </h3>
-//               <p className="text-gray-900">{selectedProject.role}</p>
-//             </div>
-
-//             <div>
-//               <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-//                 Description
-//               </h3>
-//               <p className="text-gray-900 leading-relaxed">
-//                 {selectedProject.description}
-//               </p>
-//             </div>
-
-//             <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-gray-900">
-//               <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
-//                 Impact
-//               </h3>
-//               <p className="text-gray-900 font-medium">
-//                 {selectedProject.impact}
-//               </p>
-//             </div>
-
-//             <div>
-//               <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-3">
-//                 Technology Stack
-//               </h3>
-//               <div className="flex flex-wrap gap-2">
-//                 {selectedProject.techStack.map(tech => (
-//                   <span
-//                     key={tech}
-//                     className="px-3 py-1.5 bg-gray-900 text-white text-sm font-medium rounded"
-//                   >
-//                     {tech}
-//                   </span>
-//                 ))}
-//               </div>
-//             </div>
-
-//             <div className="flex flex-wrap gap-3 pt-4">
-//               {selectedProject.deepDiveLink && (
-//                 <a
-//                   href={selectedProject.deepDiveLink}
-//                   className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-//                 >
-//                   <ExternalLink className="w-4 h-4 mr-2" />
-//                   Read Deep Dive
-//                 </a>
-//               )}
-//               {selectedProject.githubLink && (
-//                 <a
-//                   href={selectedProject.githubLink}
-//                   className="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-//                 >
-//                   <Github className="w-4 h-4 mr-2" />
-//                   View Code
-//                 </a>
-//               )}
-//               {selectedProject.paperLink && (
-//                 <a
-//                   href={selectedProject.paperLink}
-//                   className="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-//                 >
-//                   <FileText className="w-4 h-4 mr-2" />
-//                   Read Paper
-//                 </a>
-//               )}
-//             </div>
