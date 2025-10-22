@@ -1,35 +1,42 @@
 import HomePageSection from '@/components/homepage/section';
 import { useSectionView } from '@/hooks/useAnalytics';
+import { useResponsive } from '@/hooks/useResponsive';
 import { PROJECTS } from './data';
 import ProjectCard, { type ProjectCardProps } from '@/components/homepage/projects/cards';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PopUpCard from '@/components/homepage/projects/popUpCard';
 import PaginationControls from '@/components/homepage/projects/paginationControls';
 import { ProjectCategories, TechStackCategories } from '@/components/homepage/projects/cards';
 
 export default function Projects(){
       const sectionRef = useSectionView("projects");
+      const { isMobile } = useResponsive();
       const [selectedProject, setSelectedProject] = useState<ProjectCardProps | null>(null);
       const [selectedCategory, setSelectedCategory] = useState<string>("All");
       const [selectedTechStack, setSelectedTechStack] = useState<string>("All");
       const [showPapersOnly, setShowPapersOnly] = useState<boolean>(false);
       const [ page, setPage ] = useState<number>(0);
       
-      // DOCS: how to add pagination 
-      const NUMBER_OF_PROJECTS_PER_GRID = 4;
-      const totalPages = Math.ceil(PROJECTS.length / NUMBER_OF_PROJECTS_PER_GRID);
-      const startIndex = page * NUMBER_OF_PROJECTS_PER_GRID;
-      const endIndex = startIndex + NUMBER_OF_PROJECTS_PER_GRID;
-
-
+      const NUMBER_OF_PROJECTS_PER_GRID = isMobile ? 3 : 4;
+      
       // You can filter by having paper, technology stack or category // DOCS: Take notes on filters 
       const filteredProjects = PROJECTS.filter( project => {
-            console.log("Project is", project)
             const categoryMatch = project.category == selectedCategory || selectedCategory === "All";
             const techMatch  = project.techstack.includes(selectedTechStack) || selectedTechStack === "All";
             const paperMatch = project.hasPaper || !showPapersOnly
             return categoryMatch && techMatch && paperMatch
       })
+
+      const totalPages = Math.ceil(filteredProjects.length / NUMBER_OF_PROJECTS_PER_GRID);
+      const startIndex = page * NUMBER_OF_PROJECTS_PER_GRID;
+      const endIndex = startIndex + NUMBER_OF_PROJECTS_PER_GRID;
+
+      // Reset page when viewport changes to prevent being on non-existent page
+      useEffect(() => {
+            if (page >= totalPages && totalPages > 0) {
+                  setPage(0);
+            }
+      }, [isMobile, totalPages, page]);
 
       let allProjectCategories: Array<string> = Object.values(ProjectCategories)
       let allTechStackCategories: Array<string> = Object.values(TechStackCategories)
@@ -100,7 +107,6 @@ export default function Projects(){
                                           {...item}
                                           onClick={() => {
                                                 setSelectedProject({...item});
-                                                console.log("I have just been clicked with idx", {...item})
                                           }}
                                     />
                               )
@@ -112,8 +118,6 @@ export default function Projects(){
                         setPage={setPage}
                   />
                   
-
-                  {/* FIX: add this to the docs */}
                   {selectedProject && (
                         <PopUpCard 
                               selectedProject={selectedProject}

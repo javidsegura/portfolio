@@ -8,8 +8,9 @@ interface PopUpCardProps {
 }
 
 export default function PopUpCard({ selectedProject, setSelectedProject }: PopUpCardProps ){
+      // DOCS => WHAT DOES FIXED INSET-0 DO?
       return (
-            <div className='fixed inset-0 bg-black/50 z-50 flex justify-center items-center'>
+            <div className='fixed inset-0 bg-black/50 z-50 flex justify-center items-center'> 
                         <div id="section-content" className='rounded bg-white max-w-3xl w-full max-h-[90vh] overflow-y-auto'>
                               <div id="header-section" className="p-5"> 
                                     <div className="flex flex-row mb-1"> 

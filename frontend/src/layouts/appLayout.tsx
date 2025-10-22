@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export default function AppLayout(){
       return(
-            <div className="p-4 flex flex-col"> 
+            <div className="p-4 flex flex-col sm:max-w-[100vw]"> 
                   <NavBar />
                   <Outlet />
                   <Footer />

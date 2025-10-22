@@ -20,8 +20,3 @@ export default function HomePage(){
       )
 }
 
-
-/*
-1. Move tasks out 
-2. 
-*/

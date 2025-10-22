@@ -3,10 +3,12 @@ import GridBackground from '@/components/ui/grid-background';
 import { analytics } from '@/firebase';
 import { logEvent } from 'firebase/analytics';
 import { useSectionView } from '@/hooks/useAnalytics';
+import { useResponsive } from '@/hooks/useResponsive';
 
 export default function Landing(){
       // Track when landing section comes into view
       const sectionRef = useSectionView("landing");
+      const { isMobile } = useResponsive();
 
       const handleCTAClick = (button_name: string, destination: string) => {
             logEvent(analytics, "cta_button_click", {
@@ -24,18 +26,11 @@ export default function Landing(){
             });
       };
 
-      const handleCVDownload = () => {
-            logEvent(analytics, "cv_download", {
-                  source: "landing_section",
-                  file_name: "Javier-Dominguez-CV.pdf",
-                  button_type: "cta"
-            });
-      };
       return (
-            <div ref={sectionRef} className="relative flex flex-col h-[100vh] overflow-hidden bg-white" id="landing-section">
-                  <GridBackground />
+            <div ref={sectionRef} className="relative flex flex-col sm:h-[100vh] overflow-hidden bg-white" id="landing-section">
+                  <GridBackground />                  
                     
-                  <div className="flex flex-col justify-center items-start h-full max-w-5xl mx-auto px-6 z-10">
+                  <div className="flex flex-col justify-center items-start h-full max-w-5xl mx-auto p-6 z-10">
                         {/* Main Content */}
                         <div className="space-y-6">
                               {/* Name & Title */}
@@ -77,37 +72,29 @@ export default function Landing(){
                               </div>
 
                               {/* CTA Buttons */}
-                              <div className="flex flex-wrap gap-4 pt-4">
-                                    <HashLink 
-                                          to="/portfolio#projects-section" 
-                                          smooth
-                                          onClick={() => handleCTAClick("view_projects", "projects_section")}
-                                    >
-                                          <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl">
-                                                View Projects
-                                          </button>
-                                    </HashLink>
-                                    
-                                    <a 
-                                          href="/portfolio/Javier-Dominguez-CV.pdf" 
-                                          download
-                                          onClick={handleCVDownload}
-                                    >
-                                          <button className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors border border-border">
-                                                Download Resume
-                                          </button>
-                                    </a>
-
-                                    <HashLink 
-                                          to="/portfolio#about-section" 
-                                          smooth
-                                          onClick={() => handleCTAClick("contact_me", "about_section")}
-                                    >
-                                          <button className="px-6 py-3 text-foreground rounded-lg font-medium hover:bg-secondary/50 transition-colors">
-                                                Contact Me
-                                          </button>
-                                    </HashLink>
-                              </div>
+                              {!isMobile && (
+                                    <div className="flex flex-wrap gap-4">
+                                          <HashLink 
+                                                to="/portfolio#projects-section" 
+                                                smooth
+                                                onClick={() => handleCTAClick("view_projects", "projects_section")}
+                                          >
+                                                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl">
+                                                      View Projects
+                                                </button>
+                                          </HashLink>
+                                          
+                                          <HashLink 
+                                                to="/portfolio#about-section" 
+                                                smooth
+                                                onClick={() => handleCTAClick("contact_me", "about_section")}
+                                          >
+                                                <button className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors border border-border">
+                                                      Contact Me
+                                                </button>
+                                          </HashLink>
+                                    </div>
+                              )}
 
                               {/* Social Links - Add your actual links */}
                               <div className="flex gap-4 pt-2">
