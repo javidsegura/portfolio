@@ -12,7 +12,8 @@ export enum TechStackCategories {
       Python = "Python",
       C = "C",
       MySQL = "MySQL", 
-      AWS = "AWS"
+      AWS = "AWS",
+      Azure = "Azure"
 }
 
 
@@ -34,7 +35,7 @@ export interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps){
       return (
             <div 
-                  className="border-2 w-[calc(50%-0.5rem)] p-5 cursor-pointer"
+                  className="border-2 w-full md:w-[calc(50%-0.5rem)] p-5 cursor-pointer"
                   onClick={props.onClick}
                   >
                   <div id="title-section" className="flex flex-row mb-2">
@@ -46,7 +47,7 @@ export default function ProjectCard(props: ProjectCardProps){
                   <div className="rounded bg-gray-50 border-l-4 border-gray-900 p-3 mb-4">
                         <p className="text-sm font-medium text-gray-900">{props.impact}</p>
                   </div>
-                  <div className="flex flex-row gap-2">
+                  <div className="flex flex-row flex-wrap gap-2">
                         {props.techstack.map((item, _) => {
                               return (
                                     <div className="bg-gray-100 p-2 rounded text-xs"> 

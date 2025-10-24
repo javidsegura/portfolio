@@ -17,7 +17,7 @@ export default function Projects(){
       const [showPapersOnly, setShowPapersOnly] = useState<boolean>(false);
       const [ page, setPage ] = useState<number>(0);
       
-      const NUMBER_OF_PROJECTS_PER_GRID = isMobile ? 3 : 4;
+      const NUMBER_OF_PROJECTS_PER_GRID = isMobile ? 2 : 4;
       
       // You can filter by having paper, technology stack or category // DOCS: Take notes on filters 
       const filteredProjects = PROJECTS.filter( project => {
@@ -53,7 +53,7 @@ export default function Projects(){
                   <div id="filtering-section" className='flex flex-col gap-2 px-10 mb-3'>
                         <div id="area-filtering-section" className='mb-3'> 
                               <p className='text-xs mb-2'>AREAS</p>
-                              <div className='flex flex-row gap-2'> 
+                              <div className='flex flex-row flex-wrap gap-2'> 
                                     {allProjectCategories.map((item, idx) => {
                                           return (
                                                 <button key={idx} onClick={() => {
@@ -99,7 +99,7 @@ export default function Projects(){
                         </div>
                   <p className='text-xs font-light px-2'> Showing {filteredProjects.length} out of {PROJECTS.length}</p>
                   </div>
-                  <div className='flex flex-row flex-wrap gap-2 px-10 mb-3'> 
+                  <div className='flex flex-col md:flex-row flex-wrap gap-2 px-10 mb-3'> 
                         {filteredProjects.slice(startIndex, endIndex).map((item, idx) => {
                               return (
                                     <ProjectCard 
