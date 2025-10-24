@@ -33,7 +33,7 @@ export default function Timeline({ events }: TimelineProps) {
               <div className="relative z-10 flex-shrink-0">
                 <img 
                   src={event.image_url} 
-                  className="w-[55px] h-[55px] object-cover border-2 border-border bg-background rounded-xl p-2 transition-transform duration-300 group-hover:scale-110 group-hover:border-primary"
+                  className="w-[55px] h-[55px] object-cover border-2 border-border bg-background rounded-xl p-2 transition-transform duration-300 group-hover:scale-110 group-hover:border-primary/30"
                   alt={event.company || event.title}
                 />
               </div>
