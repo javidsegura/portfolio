@@ -35,7 +35,7 @@ export interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps){
       return (
             <div 
-                  className="border-2 w-full md:w-[calc(50%-0.5rem)] p-5 cursor-pointer"
+                  className="border-2 w-full md:w-[calc(50%-0.5rem)] p-5 cursor-pointer hover:shadow-lg"
                   onClick={props.onClick}
                   >
                   <div id="title-section" className="flex flex-row mb-2">

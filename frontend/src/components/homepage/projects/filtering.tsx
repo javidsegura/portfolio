@@ -53,7 +53,7 @@ export function FilteringProjectsSection({
                               </div>
                         </div>
                         <div id="tech-stack-filtering-section">
-                              <div className='flex flex-row items-end gap-4'> 
+                              <div className='flex flex-col md:flex-row md:items-end gap-4'> 
                                     <label className='flex-1'>
                                           <p className='text-sm mb-2'>TECHNOLOGY</p>
                                           <select name="selectedTechStack"
