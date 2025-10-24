@@ -6,7 +6,7 @@ import ProjectCard, { type ProjectCardProps } from '@/components/homepage/projec
 import { useState, useEffect } from 'react';
 import PopUpCard from '@/components/homepage/projects/popUpCard';
 import PaginationControls from '@/components/homepage/projects/paginationControls';
-import { ProjectCategories, TechStackCategories } from '@/components/homepage/projects/cards';
+import { FilteringProjectsSection } from '@/components/homepage/projects/filtering';
 
 export default function Projects(){
       const sectionRef = useSectionView("projects");
@@ -38,9 +38,6 @@ export default function Projects(){
             }
       }, [isMobile, totalPages, page]);
 
-      let allProjectCategories: Array<string> = Object.values(ProjectCategories)
-      let allTechStackCategories: Array<string> = Object.values(TechStackCategories)
-
 
       return (
             <HomePageSection
@@ -50,56 +47,17 @@ export default function Projects(){
                   description='A showcase of data-driven solutions and engineering projects demonstrating technical depth, business impact, and analytical rigor.'
 
             >
-                  <div id="filtering-section" className='flex flex-col gap-2 px-10 mb-3'>
-                        <div id="area-filtering-section" className='mb-3'> 
-                              <p className='text-xs mb-2'>AREAS</p>
-                              <div className='flex flex-row flex-wrap gap-2'> 
-                                    {allProjectCategories.map((item, idx) => {
-                                          return (
-                                                <button key={idx} onClick={() => {
-                                                      setSelectedCategory(item)
-                                                }}
-                                                
-                                                className={` ${
-                                                      item === selectedCategory
-                                                            ? 'primary-button'
-                                                            : 'secondary-button'
-                                                
-                                                }`}>
-                                                      {item}</button>
-                                          )
-                                    })}
-                              </div>
-                        </div>
-                        <div id="tech-stack-filtering-section">
-                              <div className='flex flex-row items-end gap-4'> 
-                                    <label className='flex-1'>
-                                          <p className='text-sm mb-2'>TECHNOLOGY</p>
-                                          <select name="selectedTechStack"
-                                                className='border-2 rounded-lg p-2 w-full'
-                                                value={selectedTechStack}
-                                                onChange={e => setSelectedTechStack(e.target.value)}
-                                          >
-                                                {allTechStackCategories.map((item, idx) => {
-                                                      return (
-                                                            <option value={item} key={idx}>{item}</option>
-                                                      )
-                                                })}
-                                          </select>
-                                    </label>
-                              <button 
-                                    className={` ${
-                                          showPapersOnly
-                                                ? "primary-button" 
-                                                : "secondary-button"
-                                    }`}
-                                    onClick={() => setShowPapersOnly(!showPapersOnly)}
-                                    >Include Paper Only</button>
-                              </div>
-                        </div>
-                  <p className='text-xs font-light px-2'> Showing {filteredProjects.length} out of {PROJECTS.length}</p>
-                  </div>
-                  <div className='flex flex-col md:flex-row flex-wrap gap-2 px-10 mb-3'> 
+                  <FilteringProjectsSection
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                        selectedTechStack={selectedTechStack}
+                        setSelectedTechStack={setSelectedTechStack}
+                        showPapersOnly={showPapersOnly}
+                        setShowPapersOnly={setShowPapersOnly}
+                        filteredProjects={filteredProjects}
+
+                  />
+                  <div className='flex flex-col md:flex-row flex-wrap gap-2 px-10 mb-3 h-min-full w-min-full'> 
                         {filteredProjects.slice(startIndex, endIndex).map((item, idx) => {
                               return (
                                     <ProjectCard 

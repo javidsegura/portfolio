@@ -79,7 +79,7 @@ export default function Landing(){
                                                 smooth
                                                 onClick={() => handleCTAClick("view_projects", "projects_section")}
                                           >
-                                                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl">
+                                                <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl cursor-pointer">
                                                       View Projects
                                                 </button>
                                           </HashLink>
@@ -89,7 +89,7 @@ export default function Landing(){
                                                 smooth
                                                 onClick={() => handleCTAClick("contact_me", "about_section")}
                                           >
-                                                <button className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors border border-border">
+                                                <button className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors border border-border cursor-pointer">
                                                       Contact Me
                                                 </button>
                                           </HashLink>
