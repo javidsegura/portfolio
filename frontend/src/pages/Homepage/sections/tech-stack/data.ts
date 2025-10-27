@@ -39,16 +39,20 @@ const ML_AND_AI_FRAMEWORKS = [
             logo_url: "https://www.vectorlogo.zone/logos/python/python-icon.svg"
       },
       {
-            name: "MySQL",
-            logo_url: "https://www.vectorlogo.zone/logos/mysql/mysql-official.svg"
+            name: "ChromaDB",
+            logo_url: "https://www.trychroma.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fchroma.d840f629.png&w=1920&q=75&dpl=dpl_BzWPUBW1xauEgjpwHBeYmCnZJ3c7"
       },
       {
             name: "Scikit-learn",
             logo_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
       },
       {
-            name: "Pandas",
-            logo_url: "https://images.seeklogo.com/logo-png/48/2/pandas-icon-logo-png_seeklogo-483545.png"
+            name: "Pytorch",
+            logo_url: "https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg"
+      },
+      {
+            name: "Hugging Face",
+            logo_url: "https://miro.medium.com/1*qfwhSex9WphMoJeSGVw29A.png"
       },
       {
             name: "Langraph",
@@ -124,6 +128,14 @@ const BIG_DATA_FRAMEWORKS = [
       {
             name: "BigQuery",
             logo_url: "https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-icon.svg"
+      },
+      {
+            name: "MySQL",
+            logo_url: "https://www.vectorlogo.zone/logos/mysql/mysql-official.svg"
+      },
+{
+            name: "Pandas",
+            logo_url: "https://images.seeklogo.com/logo-png/48/2/pandas-icon-logo-png_seeklogo-483545.png"
       },
 ]
 

@@ -21,7 +21,7 @@ export default function Footer(){
       };
 
       return (
-            <div className="flex flex-col md:flex-row gap-3 items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-3 items-center justify-center mb-15">
                   <div className="flex gap-2">
                                     <a 
                                           href="https://github.com/javidsegura" 

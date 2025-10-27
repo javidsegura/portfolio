@@ -25,13 +25,13 @@ export default function About(){
                         <div className="" id="description-info">
                               <p className="text-lg text-foreground/90 leading-relaxed space-y-4">
                                     <span className="block">
-                                          Beyond the code and equations, I'm someone who thrives on challenges and continuous growth. Whether I'm training for a triathlon, strategizing on the basketball court, or calculating probabilities at the poker table, I approach every endeavor with the same analytical mindset and competitive drive that fuels my technical work.
+                                          I’m a Computer Science and AI student fueled by curiosity and a passion for transforming complex problems into scalable, real-world solutions. My approach combines analytical precision with creativity — the same mindset I apply to research, engineering projects, and competitive challenges.
                                     </span>
                                     <span className="block">
-                                          I believe the discipline from endurance sports, the collaborative spirit from team games, and the risk assessment skills from poker directly translate to building robust systems and making data-driven decisions.
+                                          In my free time, I train for triathlons and enjoy basketball and poker. These disciplines sharpen my endurance, teamwork, and strategic thinking, influencing how I code, collaborate, and make decisions under uncertainty.
                                     </span>
                                     <span className="block">
-                                          When I'm not solving complex problems, you'll find me exploring new ideas through reading or recharging with friends—because the best solutions often come from a well-rounded perspective.
+                                          I value environments that reward initiative, critical thinking, and continuous learning. Whether I’m building high-performance computing middleware, optimizing a machine learning model, or leading a project from concept to deployment, I aim to create technology that is both elegant and impactful.
                                     </span>
                               </p>
                         </div>

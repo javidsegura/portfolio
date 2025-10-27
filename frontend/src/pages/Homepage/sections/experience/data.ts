@@ -13,7 +13,7 @@ export const EXPERIENCE_EVENTS: TimelineEvent[] = [
   },
   {
     title: "HPC Research Intern - NSF Supercomputing",
-    description: "Architecting HPC middleware framework for agentic AI workflows on Delta supercomputer (NCSA) via NSF's ACCESS program. Collaborating on protein design project (IMPRESS) with research papers in partnership with Rutgers University.",
+    description: "Designing HPC middleware for agent-based workflows on NCSA Delta supercomputer through NSF's ACCESS program. Partnering with the RADICAL research lab at Rutgers University on the Integrated Machine-learning for Protein Structures at Scale (IMPRESS) project.",
     date: "Summer 2025 - Spring 2026",
     company: "STRIDE Research Labs",
     image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/NSF_logo.svg/1024px-NSF_logo.svg.png", // Supercomputer/HPC visualization
@@ -32,7 +32,7 @@ export const EXPERIENCE_EVENTS: TimelineEvent[] = [
     description: "Built AI-powered EdTech SaaS platform using AI agents for personalized educational resource creation. Developed full-stack architecture with secure authentication, payment integration, and scalable infrastructure serving educational institutions.",
     date: "Spring 2025-Present",
     company: "NoteCrafted",
-    image_url: "https://drive.usercontent.google.com/download?id=1oFiRZ1n7KENFXGgayThP4i-x93YKOeuV", // EdTech/AI icon
+    image_url: "https://i.pinimg.com/1200x/03/d1/96/03d1969d5f1483f3d7bc6d64bad69f04.jpg",
     content_link: "https://youtu.be/j_fZ1rq486s?si=w_J1uxNvV6M39y2n"
   },
   {
