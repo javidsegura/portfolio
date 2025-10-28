@@ -16,6 +16,45 @@ export const PROJECTS: Array<ProjectCardProps> = [
             githubLink: "https://github.com/stride-research/flowgentic"
       },
       {
+            title: "Full Stack Booking System",
+            categories: [ProjectCategories.Full_stack],
+            description: "Production B2B booking platform with Django/MySQL backend, Redis caching, Firebase auth, Stripe payments, and AWS deployment",
+            impact: "Reduced scheduling overhead by 40%; processes 1000+ monthly reservations for multiple clients",
+            role: "Full Stack Developer",
+            date: "2023-2024",
+            techstack: [TechStackCategories.FastAPI, TechStackCategories.Grafana, TechStackCategories.Firebase, TechStackCategories.AWS, TechStackCategories.Stripe],
+            hasPaper: false,
+            paperLink: "",
+            deepDiveLink: "",
+            githubLink: ""
+      },
+      {
+            title: "Portfolio Optimization: MPT & CAPM",
+            categories: [ProjectCategories.Quantitative_Finance],
+            description: "Modern Portfolio Theory with efficient frontier, CAPM, PCA-based covariance denoising, and Lagrangian optimization",
+            impact: "20+ function library; formal proofs for GMVP, tangency portfolio, Sharpe ratio optimization",
+            role: "Quantitative Researcher",
+            date: "2024",
+            techstack: [TechStackCategories.Python, TechStackCategories.Numpy, TechStackCategories.Pandas],
+            hasPaper: true,
+            paperLink: "https://www.overleaf.com/read/vcjcrvhffkxs#8ab3e5",
+            deepDiveLink: "https://github.com/javidsegura/portfolio-optimization/blob/main/portfolio.ipynb",
+            githubLink: "https://github.com/javidsegura/portfolio-optimization"
+      },
+      {
+            title: "Real-Time DDoS Defense System",
+            categories: [ProjectCategories.Cybersecurity],
+            description: "C-based packet sniffer (libpcap) with Flask defense server, Streamlit dashboard; pfctl firewall automation",
+            impact: "Low-level network analysis; monitoring dashboard; automated threat detection and IP blocking",
+            role: "Systems & Security Engineer",
+            date: "2024",
+            techstack: [TechStackCategories.C, TechStackCategories.Libpcap, TechStackCategories.Python, TechStackCategories.Flask, TechStackCategories.Streamlit, TechStackCategories.Docker, TechStackCategories.Pandas, TechStackCategories.Linux],
+            hasPaper: false,
+            paperLink: "",
+            deepDiveLink: "",
+            githubLink: "https://github.com/javidsegura/Network-Protection-Tool"
+      },
+      {
             title: "Efficient Classifier: ML Framework",
             categories: [ProjectCategories.AI],
             description: "Enterprise ML framework for tabular classification with automated hyperparameter tuning, LIME interpretability, and CI/CD",
@@ -27,19 +66,6 @@ export const PROJECTS: Array<ProjectCardProps> = [
             paperLink: "https://drive.google.com/drive/u/1/folders/1GksAEhtbiqzj-pGVJixrn35E6DRu44gK",
             deepDiveLink: "https://github.com/javidsegura/efficient-classifier#documentation",
             githubLink: "https://github.com/javidsegura/efficient-classifier"
-      },
-      {
-            title: "Kronos Technologies Services",
-            categories: [ProjectCategories.Full_stack],
-            description: "Production B2B booking platform with Django/MySQL backend, Redis caching, Firebase auth, Stripe payments, and AWS deployment",
-            impact: "Reduced scheduling overhead by 40%; processes 1000+ monthly reservations for multiple clients",
-            role: "Full Stack Developer",
-            date: "2023-2024",
-            techstack: [TechStackCategories.FastAPI, TechStackCategories.Grafana, TechStackCategories.Firebase, TechStackCategories.AWS, TechStackCategories.Stripe],
-            hasPaper: false,
-            paperLink: "",
-            deepDiveLink: "",
-            githubLink: ""
       },
       {
             title: "URL Shortener: Production Infrastructure",
@@ -81,19 +107,6 @@ export const PROJECTS: Array<ProjectCardProps> = [
             githubLink: "https://github.com/javidsegura/CasinoMines"
       },
       {
-            title: "Portfolio Optimization: MPT & CAPM",
-            categories: [ProjectCategories.Quantitative_Finance],
-            description: "Modern Portfolio Theory with efficient frontier, CAPM, PCA-based covariance denoising, and Lagrangian optimization",
-            impact: "20+ function library; formal proofs for GMVP, tangency portfolio, Sharpe ratio optimization",
-            role: "Quantitative Researcher",
-            date: "2024",
-            techstack: [TechStackCategories.Python, TechStackCategories.Numpy, TechStackCategories.Pandas],
-            hasPaper: true,
-            paperLink: "https://www.overleaf.com/read/vcjcrvhffkxs#8ab3e5",
-            deepDiveLink: "https://github.com/javidsegura/portfolio-optimization/blob/main/portfolio.ipynb",
-            githubLink: "https://github.com/javidsegura/portfolio-optimization"
-      },
-      {
             title: "GPU-Accelerated Monte Carlo for Systemic Risk [In Development]",
             categories: [ProjectCategories.Quantitative_Finance, ProjectCategories.HPC],
             description: "HPC Monte Carlo simulations modeling EU market crashes with MPI/OpenMP/CUDA parallelism; VaR and Greeks calculations",
@@ -106,17 +119,4 @@ export const PROJECTS: Array<ProjectCardProps> = [
             deepDiveLink: "",
             githubLink: "https://github.com/javidsegura/gpu-montecarlo-risk"
       },
-      {
-            title: "Real-Time DDoS Defense System",
-            categories: [ProjectCategories.Cybersecurity],
-            description: "C-based packet sniffer (libpcap) with Flask defense server, Streamlit dashboard; pfctl firewall automation",
-            impact: "Low-level network analysis; monitoring dashboard; automated threat detection and IP blocking",
-            role: "Systems & Security Engineer",
-            date: "2024",
-            techstack: [TechStackCategories.C, TechStackCategories.Libpcap, TechStackCategories.Python, TechStackCategories.Flask, TechStackCategories.Streamlit, TechStackCategories.Docker, TechStackCategories.Pandas, TechStackCategories.Linux],
-            hasPaper: false,
-            paperLink: "",
-            deepDiveLink: "",
-            githubLink: "https://github.com/javidsegura/Network-Protection-Tool"
-      }
 ]
