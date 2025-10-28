@@ -8,7 +8,6 @@ interface PopUpCardProps {
 }
 
 export default function PopUpCard({ selectedProject, setSelectedProject }: PopUpCardProps ){
-      // DOCS => WHAT DOES FIXED INSET-0 DO?
       return (
             <div className='fixed inset-0 bg-black/50 z-50 flex justify-center items-center'> 
                         <div id="section-content" className='rounded bg-white max-w-3xl w-full max-h-[90vh] overflow-y-auto'>
@@ -17,7 +16,7 @@ export default function PopUpCard({ selectedProject, setSelectedProject }: PopUp
                                           <h3 className="font-bold text-2xl">{selectedProject.title}</h3>
                                           <X onClick={() => setSelectedProject(null)} className='cursor-pointer ml-auto'/>
                                     </div>
-                                    <p className="text-sm font-light text-gray-500 tracking-wide mb-3">{selectedProject.category} · {selectedProject.date}</p>
+                                    <p className="text-sm font-light text-gray-500 tracking-wide mb-3">{selectedProject.categories} · {selectedProject.date}</p>
                               </div>
                               <div className="border-t border-gray-300"></div>
                               <div id="content-section" className="p-5">
@@ -47,20 +46,24 @@ export default function PopUpCard({ selectedProject, setSelectedProject }: PopUp
                                     </div>
 
                                     <div id="final-links" className="flex flex-row gap-5">
-                                          <a className="primary-button bg-black" target="_blank" href={selectedProject.deepDiveLink}>
-                                                <div className="flex flex-row gap-2"> 
-                                                      <ExternalLink width={16} />
-                                                      <p className="font-light">Read Deep Dive</p>
-                                                </div>
-                                          </a>
-                                          <a className="secondary-button" target="_blank" href={selectedProject.githubLink}>
-                                                <div className="flex flex-row gap-2">
-                                                      <Github width={16} />
-                                                      <p className="font-light">View Code</p>
-                                                </div>
-                                          </a>
+                                          {selectedProject.deepDiveLink && (
+                                                <a className="primary-button bg-black" target="_blank" href={selectedProject.deepDiveLink}>
+                                                      <div className="flex flex-row gap-2"> 
+                                                            <ExternalLink width={16} />
+                                                            <p className="font-light">Read Deep Dive</p>
+                                                      </div>
+                                                </a>
+                                          )}
+                                          {selectedProject.githubLink && (
+                                                <a className="secondary-button" target="_blank" href={selectedProject.githubLink}>
+                                                      <div className="flex flex-row gap-2">
+                                                            <Github width={16} />
+                                                            <p className="font-light">View Code</p>
+                                                      </div>
+                                                </a>
+                                          )}
                                           {
-                                                selectedProject.hasPaper && (
+                                                selectedProject.paperLink && (
                                                 <a className="secondary-button" target="_blank" href={selectedProject.paperLink}>
                                                       <div className="flex flex-row gap-2">
                                                             <FileText width={16} />

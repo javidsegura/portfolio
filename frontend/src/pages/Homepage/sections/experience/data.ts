@@ -25,15 +25,15 @@ export const EXPERIENCE_EVENTS: TimelineEvent[] = [
     date: "2023",
     company: "EduCaixa",
     image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/La_Caixa_logo.svg/1200px-La_Caixa_logo.svg.png", // Silicon Valley/innovation icon
-    content_link: "https://youtu.be/IB0TZsfCL0o?si=yPa0EmTS0en3C0Jx"
+    content_link: "https://sites.google.com/heidelbergschule.com/soloscientialiberabitnos-en/intro?authuser=0"
   },
   {
-    title: "Founded NoteCrafted",
-    description: "Built AI-powered EdTech SaaS platform using AI agents for personalized educational resource creation. Developed full-stack architecture with secure authentication, payment integration, and scalable infrastructure serving educational institutions.",
-    date: "Spring 2025-Present",
-    company: "NoteCrafted",
-    image_url: "https://i.pinimg.com/1200x/03/d1/96/03d1969d5f1483f3d7bc6d64bad69f04.jpg",
-    content_link: "https://youtu.be/j_fZ1rq486s?si=w_J1uxNvV6M39y2n"
+    title: "Co-founder & Full Stack Developer",
+    description: "Architected and deployed production B2B booking platform processing 1000+ monthly reservations, reducing manual scheduling overhead by 40%. Built full-stack system with Django/MySQL backend, Redis caching, Firebase auth/analytics, Stripe payments on AWS with CI/CD pipelines. Implemented RESTful APIs, responsive frontend, and automated email/social media marketing workflows improving client campaign ROI.",
+    date: "2022-2024",
+    company: "Kronos Technologies Services",
+    image_url: "https://media.licdn.com/dms/image/v2/D4D0BAQHzvdiI5--uSQ/company-logo_100_100/company-logo_100_100/0/1689966983791/kronos_technologies_services_logo?e=1762992000&v=beta&t=Dv0ZRRH6XV5J5IaCiAW_yd1a9H8Xfx69M-f-0HegdVg",
+    content_link: ""
   },
   {
     title: "Nova Talent 111 Student List Nomination",

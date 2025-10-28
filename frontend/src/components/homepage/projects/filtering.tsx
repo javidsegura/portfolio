@@ -5,10 +5,10 @@ import { PROJECTS } from '@/pages/Homepage/sections/projects/data';
 
 
 interface FilteringProjectsProps {
-      selectedCategory: string,
-      setSelectedCategory: (category: string) => void,
-      selectedTechStack: string,
-      setSelectedTechStack: (tech_stack: string) => void,
+      selectedCategory: ProjectCategories,
+      setSelectedCategory: (category: ProjectCategories) => void,
+      selectedTechStack: TechStackCategories,
+      setSelectedTechStack: (tech_stack: TechStackCategories) => void,
       showPapersOnly: boolean,
       setShowPapersOnly: (showPapers: boolean) => void
       filteredProjects: Array<ProjectCardProps> 
@@ -26,8 +26,8 @@ export function FilteringProjectsSection({
       setShowPapersOnly,
       filteredProjects
       }: FilteringProjectsProps){
-      let allProjectCategories: Array<string> = Object.values(ProjectCategories)
-      let allTechStackCategories: Array<string> = Object.values(TechStackCategories)
+      let allProjectCategories: Array<ProjectCategories> = Object.values(ProjectCategories)
+      let allTechStackCategories: Array<TechStackCategories> = Object.values(TechStackCategories)
 
 
       return (
@@ -59,7 +59,7 @@ export function FilteringProjectsSection({
                                           <select name="selectedTechStack"
                                                 className='border-2 rounded-lg p-2 w-full'
                                                 value={selectedTechStack}
-                                                onChange={e => setSelectedTechStack(e.target.value)}
+                                                onChange={e => setSelectedTechStack(e.target.value as TechStackCategories)}
                                           >
                                                 {allTechStackCategories.map((item, idx) => {
                                                       return (

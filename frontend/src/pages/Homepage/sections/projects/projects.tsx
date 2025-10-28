@@ -2,7 +2,7 @@ import HomePageSection from '@/components/homepage/section';
 import { useSectionView } from '@/hooks/useAnalytics';
 import { useResponsive } from '@/hooks/useResponsive';
 import { PROJECTS } from './data';
-import ProjectCard, { type ProjectCardProps } from '@/components/homepage/projects/cards';
+import ProjectCard, { type ProjectCardProps, ProjectCategories, TechStackCategories } from '@/components/homepage/projects/cards';
 import { useState, useEffect } from 'react';
 import PopUpCard from '@/components/homepage/projects/popUpCard';
 import PaginationControls from '@/components/homepage/projects/paginationControls';
@@ -12,8 +12,8 @@ export default function Projects(){
       const sectionRef = useSectionView("projects");
       const { isMobile } = useResponsive();
       const [selectedProject, setSelectedProject] = useState<ProjectCardProps | null>(null);
-      const [selectedCategory, setSelectedCategory] = useState<string>("All");
-      const [selectedTechStack, setSelectedTechStack] = useState<string>("All");
+      const [selectedCategory, setSelectedCategory] = useState<ProjectCategories>(ProjectCategories.All);
+      const [selectedTechStack, setSelectedTechStack] = useState<TechStackCategories>(TechStackCategories.All);
       const [showPapersOnly, setShowPapersOnly] = useState<boolean>(false);
       const [ page, setPage ] = useState<number>(0);
       
@@ -21,8 +21,8 @@ export default function Projects(){
       
       // You can filter by having paper, technology stack or category // DOCS: Take notes on filters 
       const filteredProjects = PROJECTS.filter( project => {
-            const categoryMatch = project.category == selectedCategory || selectedCategory === "All";
-            const techMatch  = project.techstack.includes(selectedTechStack) || selectedTechStack === "All";
+            const categoryMatch = project.categories.includes(selectedCategory) || selectedCategory === ProjectCategories.All;
+            const techMatch  = project.techstack.includes(selectedTechStack) || selectedTechStack === TechStackCategories.All;
             const paperMatch = project.hasPaper || !showPapersOnly
             return categoryMatch && techMatch && paperMatch
       })
