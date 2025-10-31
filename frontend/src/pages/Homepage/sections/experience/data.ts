@@ -5,7 +5,7 @@ import type { TimelineEvent } from "@/components/homepage/experience/timeline";
 export const EXPERIENCE_EVENTS: TimelineEvent[] = [
   {
     title: "Top of Class - Dean's List Recognition",
-    description: "Achieved 93/100 GPA in Computer Science & AI at IE University, earning Dean's List honors and recognition as top performer in the School of Science & Technology across multiple semesters.",
+    description: "Achieved 96.3/100 GPA in Computer Science & AI at IE University, earning Dean's List honors and recognition as top performer in the School of Science & Technology across multiple semesters.",
     date: "2023-Present",
     company: "IE University",
     image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/IE_University_logo.svg/1136px-IE_University_logo.svg.png",  // Academic achievement icon/IE logo
