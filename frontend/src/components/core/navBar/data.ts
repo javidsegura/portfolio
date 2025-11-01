@@ -26,6 +26,6 @@ export const WEB_LINKS = [
 ]
 
 export const FILES_LINKS = [{
-      "name": "[ Download CV ]",
+      "name": "[ Download Résumé ]",
       "link": "/portfolio/Javier-Dominguez-CV.pdf"
 },]
