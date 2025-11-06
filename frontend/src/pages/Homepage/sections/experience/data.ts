@@ -40,7 +40,7 @@ export const EXPERIENCE_EVENTS: TimelineEvent[] = [
     description: "Nominated by Nova Talent CEO for Spain's 111 Student List, recognizing exceptional potential and achievements among Spanish students.",
     date: "2025",
     company: "Nova Talent",
-    image_url: "https://media.licdn.com/dms/image/v2/C4E0BAQG2Az4sSx_0ng/company-logo_200_200/company-logo_200_200/0/1642067675945/nova_logo?e=1762387200&v=beta&t=f4qEpfJzImPIDdU-fwKN2PaeCCWiGB5Luqr97QXetpc", // Award/recognition icon
+    image_url: "https://media.glassdoor.com/sqll/4181684/nova-talent-squareLogo-1701160834854.png", // Award/recognition icon
     content_link: "https://www.novatalent.com/"
   }
 ];

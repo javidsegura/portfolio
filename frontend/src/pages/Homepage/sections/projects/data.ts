@@ -120,3 +120,4 @@ export const PROJECTS: Array<ProjectCardProps> = [
             githubLink: "https://github.com/javidsegura/gpu-montecarlo-risk"
       },
 ]
+
