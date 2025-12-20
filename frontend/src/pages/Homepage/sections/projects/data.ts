@@ -16,17 +16,17 @@ export const PROJECTS: Array<ProjectCardProps> = [
             githubLink: "https://github.com/stride-research/flowgentic"
       },
       {
-            title: "URL Shortener: Production Infrastructure",
-            categories: [ProjectCategories.Full_stack],
-            description: "Production-ready URL shortener with FastAPI backend, React frontend, automated AWS deployment via Terraform/Ansible, and comprehensive observability",
-            impact: "Demonstrates end-to-end ownership: IaC provisioning, async architecture with Redis caching, OpenTelemetry metrics/traces, Slack alerting, and E2E test coverage",
-            role: "Full Stack Developer",
-            date: "2025",
-            techstack: [TechStackCategories.FastAPI, TechStackCategories.Grafana, TechStackCategories.Firebase, TechStackCategories.Terraform, TechStackCategories.Ansible, TechStackCategories.Stripe],
+            title: "AI-Powered Ticket Resolution Platform",
+            categories: [ProjectCategories.Full_stack, ProjectCategories.AI],
+            description: "Event-driven support ticket system processing 500+ concurrent agent workflows with <200ms p95 latency; FastAPI backend, MySQL, Redis caching, React observability dashboard with live metrics and A/B experiment tracking",
+            impact: "75%+ backend test coverage with E2E tests for critical workflows; deployed via Docker Compose with automated CI/CD and infrastructure-as-code to multi-cloud environment (Azure and AWS)",
+            role: "Full Stack + AI Engineer",
+            date: "2025-Present",
+            techstack: [TechStackCategories.FastAPI, TechStackCategories.RabbitMQ, TechStackCategories.React, TechStackCategories.Terraform, TechStackCategories.Ansible, TechStackCategories.SlackAPI, TechStackCategories.ChromaDB],
             hasPaper: false,
             paperLink: "",
-            deepDiveLink: "",
-            githubLink: "https://github.com/javidsegura/url-shortener"
+            deepDiveLink: "https://medium.com/@jdominguez.ieu2023/building-zeffo-how-we-engineered-an-ai-powered-ticket-resolution-platform-a22c10fe255b?postPublishedType=repub",
+            githubLink: ""
       },
       {
             title: "GPU-Accelerated Monte Carlo for Systemic Risk",
@@ -94,17 +94,17 @@ export const PROJECTS: Array<ProjectCardProps> = [
             githubLink: "https://github.com/javidsegura/efficient-classifier"
       },
       {
-            title: "AI-Powered Ticket Resolution Platform",
-            categories: [ProjectCategories.Full_stack, ProjectCategories.AI],
-            description: "Event-driven support ticket system processing 500+ concurrent agent workflows with <200ms p95 latency; FastAPI backend, MySQL, Redis caching, React observability dashboard with live metrics and A/B experiment tracking",
-            impact: "75%+ backend test coverage with E2E tests for critical workflows; deployed via Docker Compose with automated CI/CD and infrastructure-as-code to multi-cloud environment (Azure and AWS)",
-            role: "Full Stack + AI Engineer",
-            date: "2025-Present",
-            techstack: [TechStackCategories.FastAPI, TechStackCategories.RabbitMQ, TechStackCategories.React, TechStackCategories.Terraform, TechStackCategories.Ansible, TechStackCategories.SlackAPI, TechStackCategories.ChromaDB],
+            title: "URL Shortener: Production Infrastructure",
+            categories: [ProjectCategories.Full_stack],
+            description: "Production-ready URL shortener with FastAPI backend, React frontend, automated AWS deployment via Terraform/Ansible, and comprehensive observability",
+            impact: "Demonstrates end-to-end ownership: IaC provisioning, async architecture with Redis caching, OpenTelemetry metrics/traces, Slack alerting, and E2E test coverage",
+            role: "Full Stack Developer",
+            date: "2025",
+            techstack: [TechStackCategories.FastAPI, TechStackCategories.Grafana, TechStackCategories.Firebase, TechStackCategories.Terraform, TechStackCategories.Ansible, TechStackCategories.Stripe],
             hasPaper: false,
             paperLink: "",
-            deepDiveLink: "https://medium.com/@jdominguez.ieu2023/building-zeffo-how-we-engineered-an-ai-powered-ticket-resolution-platform-a22c10fe255b?postPublishedType=repub",
-            githubLink: ""
+            deepDiveLink: "",
+            githubLink: "https://github.com/javidsegura/url-shortener"
       },
       {
             title: "CasinoMines: Probabilistic Risk Modeling",
