@@ -26,7 +26,8 @@ export const PROJECTS: Array<ProjectCardProps> = [
             hasPaper: false,
             paperLink: "",
             deepDiveLink: "https://medium.com/@jdominguez.ieu2023/building-zeffo-how-we-engineered-an-ai-powered-ticket-resolution-platform-a22c10fe255b?postPublishedType=repub",
-            githubLink: ""
+            githubLink: "",
+            videoURL: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7405644750604898305?compact=1",
       },
       {
             title: "GPU-Accelerated Monte Carlo for Systemic Risk",

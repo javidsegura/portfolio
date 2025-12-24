@@ -61,6 +61,7 @@ export interface ProjectCardProps {
       paperLink: string,
       deepDiveLink: string,
       githubLink: string,
+      videoURL?: string,
       onClick?: () => void,
 }
 

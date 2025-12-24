@@ -1,5 +1,6 @@
 import type { ProjectCardProps } from "./cards";
 import { ExternalLink, Github, X , FileText} from "lucide-react"
+import { getVideoEmbedUrl } from "@/lib/videoUtils";
 
 
 interface PopUpCardProps {
@@ -32,6 +33,41 @@ export default function PopUpCard({ selectedProject, setSelectedProject }: PopUp
                                           <p className="text-xs text-gray-500 mb-2">IMPACT</p>
                                           <p >{selectedProject.impact}</p>
                                     </div>
+                                    {selectedProject.videoURL && (() => {
+                                          const embedUrl = getVideoEmbedUrl(selectedProject.videoURL);
+                                          if (!embedUrl) return null;
+                                          
+                                          const isDirectVideo = embedUrl.match(/\.(mp4|webm|ogg|mov)(\?.*)?$/i);
+                                          
+                                          return (
+                                                <div className="mb-5">
+                                                      <p className="text-xs text-gray-500 mb-2">VIDEO</p>
+                                                      <div className="w-full rounded-lg overflow-hidden bg-black">
+                                                            {isDirectVideo ? (
+                                                                  <video 
+                                                                        src={embedUrl} 
+                                                                        controls 
+                                                                        className="w-full h-auto max-h-[500px]"
+                                                                        title={`${selectedProject.title} video`}
+                                                                  >
+                                                                        Your browser does not support the video tag.
+                                                                  </video>
+                                                            ) : (
+                                                                  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                                                                        <iframe 
+                                                                              src={embedUrl}
+                                                                              className="absolute top-0 left-0 w-full h-full"
+                                                                              frameBorder="0"
+                                                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                              allowFullScreen
+                                                                              title={`${selectedProject.title} video`}
+                                                                        />
+                                                                  </div>
+                                                            )}
+                                                      </div>
+                                                </div>
+                                          );
+                                    })()}
                                     <div id="technology-stack" className="flex flex-col mb-5">
                                           <p className="text-xs text-gray-500 mb-2">TECHNOLOGY STACK</p>
                                           <div className="flex flew-row gap-2"> 
