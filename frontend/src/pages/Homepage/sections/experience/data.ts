@@ -40,7 +40,7 @@ export const EXPERIENCE_EVENTS: TimelineEvent[] = [
     description: "Software Engineering Summer Intern in the Infrastructure Team",
     date: "2026",
     company: "Citi",
-    image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Citi.svg/250px-Citi.svg.png", // Award/recognition icon
+    image_url: "https://www.uruguayxxi.gub.uy/uploads/servicio/resize_5dfd77747a6128af2f816f1630df1165ebb957ea.png.png", 
     content_link: "https://www.linkedin.com/posts/javids_citi-technology-infrastructure-activity-7426737096662642688-yihv?utm_source=share&utm_medium=member_desktop&rcm=ACoAADfIqEoBFtUKckKQ5o7kE560SjkWBk8svGE"
   }
 ];
