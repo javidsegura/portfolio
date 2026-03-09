@@ -54,7 +54,7 @@ export default function Landing(){
                               <div className="flex items-center gap-2 text-lg">
                                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                                     <span className="text-muted-foreground">
-                                          Open to Summer 2026 internship opportunities
+                                          Open to Fall '26 and Summer '27 internship opportunities
                                     </span>
                               </div>
 
