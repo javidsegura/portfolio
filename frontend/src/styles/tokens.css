@@ -1,0 +1,52 @@
+/* Design tokens: colour, elevation and timing primitives for the whole site. */
+
+:root {
+  /* ---- Surfaces -------------------------------------------------------
+     Warm paper base rather than clinical #FFF. Raised surfaces go brighter
+     than the page so cards read as resting on top of it, not cut into it. */
+  --paper: oklch(0.9856 0.0042 84.5);
+  --paper-raised: oklch(1 0 0);
+  --paper-sunken: oklch(0.9642 0.0055 84.5);
+
+  /* ---- Ink ------------------------------------------------------------ */
+  --ink: oklch(0.2178 0.0069 67.5);
+  --ink-muted: oklch(0.5385 0.0116 67);
+  --ink-faint: oklch(0.7045 0.0091 70);
+
+  /* ---- Structure ------------------------------------------------------ */
+  --line: oklch(0.9137 0.0043 84.5);
+  --line-strong: oklch(0.8642 0.0055 84.5);
+
+  /* ---- Accent ---------------------------------------------------------
+     One vivid colour for the whole site. Saturated orange-gold, kept off
+     body text on purpose: at text sizes an accessible amber turns brown,
+     so this is reserved for fills, badges, glows and large display type. */
+  --amber: oklch(0.7776 0.1637 62.5);
+  --amber-bright: oklch(0.8265 0.1523 71);
+  --amber-soft: oklch(0.9563 0.0405 78);
+  --amber-ring: oklch(0.7776 0.1637 62.5 / 0.35);
+
+  /* ---- Elevation ------------------------------------------------------
+     Realistic drop shadows, no glow. --shadow-iso is the signature
+     treatment and is deliberately heavy; use it once or twice per view. */
+  --shadow-flat: 0 1px 2px oklch(0.2178 0.0069 67.5 / 0.04);
+  --shadow-rest: 0 1px 2px oklch(0.2178 0.0069 67.5 / 0.05),
+    0 4px 12px oklch(0.2178 0.0069 67.5 / 0.05);
+  --shadow-lift: 0 2px 4px oklch(0.2178 0.0069 67.5 / 0.05),
+    0 12px 28px oklch(0.2178 0.0069 67.5 / 0.09);
+  --shadow-iso: 0 18px 40px oklch(0.2178 0.0069 67.5 / 0.13),
+    0 4px 10px oklch(0.2178 0.0069 67.5 / 0.07);
+
+  /* ---- Motion ---------------------------------------------------------
+     Quiet easing: fast out of the gate, long settle. Nothing bounces. */
+  --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-sym: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 620ms;
+
+  /* ---- Layout ---------------------------------------------------------- */
+  --nav-height: 4rem;
+  --gutter: 1.5rem;
+  --measure: 68ch;
+}

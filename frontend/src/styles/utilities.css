@@ -1,0 +1,115 @@
+/* Composed utilities: depth treatments, typographic defaults, focus, print. */
+
+@layer utilities {
+  /* The signature treatment. Isometric tilt plus a solid, realistic shadow.
+     Reserved for one or two objects per view. */
+  .iso-object {
+    transform: perspective(1400px) rotateX(11deg) rotateY(-14deg) rotateZ(2deg);
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-iso);
+  }
+
+  .iso-object-soft {
+    transform: perspective(1600px) rotateX(6deg) rotateY(-8deg);
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Ambient backdrop: a ruled plane receding into the screen. Constant and
+     quiet, unlike the signature objects which are one-per-view. */
+  .grid-plane {
+    background-image: linear-gradient(
+        to right,
+        var(--line) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .grid-plane-fine {
+    background-image: linear-gradient(
+        to right,
+        var(--line) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Headlines: tighter tracking and heavier weight, per the type discipline
+     of one family differentiated by weight rather than by mixing faces. */
+  .type-display {
+    font-weight: 620;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+
+  .type-title {
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.12;
+  }
+
+  .type-body {
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.68;
+  }
+
+  /* Small structural labels above headings. */
+  .type-eyebrow {
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+  }
+
+  .measure {
+    max-width: var(--measure);
+  }
+}
+
+@layer base {
+  /* Visible keyboard focus everywhere, amber so it reads as intentional. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--amber-soft);
+    color: var(--ink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+  }
+}
+
+/* Print: /cv and /research/thesis must survive being printed to PDF. */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-plain {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    transform: none !important;
+    background: #fff !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #555;
+  }
+}

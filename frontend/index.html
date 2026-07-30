@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="0BR1UPzCfvH6PvQoEAlp-T3g0sdQLDtIgi1_L3t25W0" />
-    
+
+    <!-- Decodes the path that public/404.html encoded, before React mounts, so
+         deep links survive a hard refresh on GitHub Pages. -->
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (part) {
+              return part.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
@@ -38,10 +59,9 @@
     <meta name="twitter:description" content="Computer Science & AI student building scalable solutions at the intersection of technology and innovation. Open to Summer 2026 internship opportunities." />
     <meta name="twitter:image" content="https://javidsegura.github.io/portfolio/social-media-pic.png" />
     <meta name="twitter:image:alt" content="Javier Domínguez - Software Engineer & AI Student" />
-    <meta name="twitter:creator" content="@yourtwitterhandle" />
-    
+
     <!-- Additional Meta Tags -->
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#fbfaf7" />
     <meta name="application-name" content="Javier Domínguez Portfolio" />
     
     <!-- Structured Data (JSON-LD) for SEO -->
@@ -57,7 +77,7 @@
       "knowsAbout": ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Quantitative Finance", "Full Stack Development"],
       "alumniOf": {
         "@type": "Organization",
-        "name": "Your University"
+        "name": "IE University"
       },
       "sameAs": [
         "https://github.com/javidsegura",
