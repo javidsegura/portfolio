@@ -1,0 +1,137 @@
+/* Ambient motion primitives. Each element type gets its own behaviour so no
+   two things on screen pulse identically. Nothing here is fast or large. */
+
+/* Background elements: slow opacity/scale breathing. */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.015);
+  }
+}
+
+/* Signature depth objects: barely-there vertical drift. */
+@keyframes float-rest {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+/* Live status indicators: a single expanding signal ring. */
+@keyframes signal-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.65;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Foreground content entering on scroll. */
+@keyframes fade-lift {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Primary actions only, and only once touched. */
+@keyframes press-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--amber-ring);
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+
+/* Entrances with a little overshoot, for elements that should feel physical
+   rather than merely faded in. */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.012) translate3d(0, -2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+/* Slow lean, for a resting object that should not look frozen. */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-0.5deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(0.5deg) translate3d(0, -5px, 0);
+  }
+}
+
+.anim-breathe {
+  animation: breathe 9s var(--ease-sym) infinite;
+}
+
+.anim-pop {
+  animation: pop-in 620ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.anim-sway {
+  animation: sway 8s var(--ease-sym) infinite;
+}
+
+.anim-float {
+  animation: float-rest 7s var(--ease-sym) infinite;
+}
+
+.anim-signal {
+  animation: signal-ring 2.8s var(--ease-quiet) infinite;
+}
+
+.anim-fade-lift {
+  animation: fade-lift var(--dur-slow) var(--ease-quiet) both;
+}
+
+/* Global opt-out. Ambient loops stop entirely; entrances resolve to their
+   final state rather than replaying without motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .anim-breathe,
+  .anim-float,
+  .anim-signal,
+  .anim-sway,
+  .anim-pop {
+    animation: none !important;
+  }
+}

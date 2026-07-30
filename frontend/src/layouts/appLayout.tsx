@@ -1,15 +1,24 @@
-import Footer from "@/components/core/footer";
-import NavBar from "@/components/core/navBar/navBar";
 import { Outlet } from "react-router-dom";
+import { NavBar } from "@/components/layout/nav/NavBar";
+import { Footer } from "@/components/layout/Footer";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
+import { CommandPaletteProvider } from "@/providers/CommandPaletteProvider";
 
-export default function AppLayout(){
-      return(
-            <div className="flex flex-col sm:max-w-[100vw]"> 
-                  <NavBar />
-                  <div className="p-4 overflow-x-hidden">
-                        <Outlet />
-                  </div>
-                  <Footer />
-            </div>
-      )
+/**
+ * Shell shared by every route. The command palette lives here so it is
+ * available site-wide rather than being re-mounted per page.
+ */
+export default function AppLayout() {
+  return (
+    <CommandPaletteProvider>
+      <ScrollToTop />
+      <div className="flex min-h-screen flex-col">
+        <NavBar />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </CommandPaletteProvider>
+  );
 }

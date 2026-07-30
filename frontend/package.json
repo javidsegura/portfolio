@@ -15,7 +15,9 @@
     "@react-three/fiber": "^9.3.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "firebase": "^12.4.0",
+    "fuse.js": "^7.5.0",
     "lucide-react": "^0.545.0",
     "motion": "^12.23.24",
     "react": "^19.1.1",
@@ -24,7 +26,9 @@
     "react-router-dom": "^7.9.4",
     "react-router-hash-link": "^2.4.3",
     "tailwind-merge": "^3.3.1",
-    "three": "^0.180.0"
+    "three": "^0.180.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -33,6 +37,7 @@
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@types/react-router-hash-link": "^2.4.9",
+    "@types/topojson-client": "^3.1.5",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "dotenv-cli": "^11.0.0",
