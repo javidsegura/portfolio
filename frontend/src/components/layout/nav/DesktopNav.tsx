@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { PRIMARY_NAV, ROUTES, SITE, UTILITY_NAV } from "@/config";
+import { PRIMARY_NAV, ROUTES, UTILITY_NAV } from "@/config";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { LocaleLink } from "@/components/primitives";
 import { CommandTrigger } from "./CommandTrigger";
 import { LanguageToggle } from "./LanguageToggle";
 
 export function DesktopNav() {
   const { t, localePath } = useLanguage();
+  const identity = useSiteIdentity();
 
   return (
     <div className="flex w-full items-center gap-8">
@@ -15,7 +17,7 @@ export function DesktopNav() {
         to={ROUTES.home}
         className="type-title shrink-0 text-sm text-ink transition-colors hover:text-ink-muted"
       >
-        {SITE.shortName}
+        {identity.shortName}
       </LocaleLink>
 
       <nav className="flex items-center gap-6">

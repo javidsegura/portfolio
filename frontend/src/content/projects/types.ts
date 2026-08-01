@@ -1,6 +1,7 @@
 /** Project content model. Extends the original card shape rather than replacing it. */
 
 import type {
+  Organizations,
   ProjectCategories,
   ProjectStatus,
   ProjectTier,
@@ -41,13 +42,40 @@ export interface Project {
   role: string;
   date: string;
   techstack: string[];
-  /** Affiliation-mark ids of organisations this work was done with. */
-  orgIds?: string[];
+  /** Organisations this work was done with. */
+  orgIds?: Organizations[];
   featured: boolean;
   hasPaper: boolean;
   links: ProjectLinks;
+  /** Video for the media pane. Takes precedence over `imageURL`. */
   videoURL?: string;
+  /**
+   * Still image for the media pane: an imported asset from
+   * `src/assets/projects/` or a plain URL. Shown when there is no video;
+   * without either the pane reads "No image available".
+   */
+  imageURL?: string;
   narrative: NarrativeSection[];
+}
+
+/** One narrative section's translated copy. */
+export interface NarrativeTranslation {
+  heading: string;
+  body: string[];
+}
+
+/**
+ * Spanish overlay for a project, merged over the English record at render
+ * time. Kept separate from `Project` so the canonical data stays single-source
+ * and a missing translation degrades to English rather than breaking.
+ */
+export interface ProjectTranslation {
+  tagline: string;
+  description: string;
+  impact: string;
+  role: string;
+  /** Keyed by the English section's `id`. */
+  narrative: Record<string, NarrativeTranslation>;
 }
 
 /** Props for the grid card, derived from the full record. */

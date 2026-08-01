@@ -2,11 +2,12 @@ import { ExternalLink, FileText, Github, Globe } from "lucide-react";
 import { Chip } from "@/components/primitives";
 import { useT } from "@/providers/LanguageProvider";
 import { getAffiliationMark } from "@/components/brand/affiliationMarks";
-import type { Project } from "@/content/projects";
+import { useEnumLabels, type Project } from "@/content/projects";
 
 /** Stack, role, dates, status and outbound links. Scannable in one pass. */
 export function MetaBlock({ project }: { project: Project }) {
   const t = useT();
+  const labels = useEnumLabels();
 
   const links = [
     { href: project.links.github, label: t("project.repo"), Icon: Github },
@@ -33,11 +34,15 @@ export function MetaBlock({ project }: { project: Project }) {
         </div>
         <div>
           <dt className="type-eyebrow text-ink-faint">{t("project.status")}</dt>
-          <dd className="mt-1 text-sm text-ink">{project.status}</dd>
+          <dd className="mt-1 text-sm text-ink">
+            {labels.status(project.status)}
+          </dd>
         </div>
         <div>
-          <dt className="type-eyebrow text-ink-faint">Type</dt>
-          <dd className="mt-1 text-sm text-ink">{project.track}</dd>
+          <dt className="type-eyebrow text-ink-faint">{t("project.type")}</dt>
+          <dd className="mt-1 text-sm text-ink">
+            {labels.track(project.track)}
+          </dd>
         </div>
       </dl>
 
@@ -52,7 +57,7 @@ export function MetaBlock({ project }: { project: Project }) {
 
       {project.orgIds && project.orgIds.length > 0 && (
         <div className="mt-6">
-          <p className="type-eyebrow mb-2 text-ink-faint">With</p>
+          <p className="type-eyebrow mb-2 text-ink-faint">{t("project.with")}</p>
           <div className="flex flex-wrap items-center gap-4">
             {project.orgIds.map((orgId) => {
               const mark = getAffiliationMark(orgId);

@@ -23,12 +23,18 @@ import { PrevNextNav } from "@/components/project/PrevNextNav";
 import { ProjectVisual } from "@/components/project/visuals/ProjectVisual";
 import { MediaPane } from "@/components/project/visuals/MediaPane";
 import { ROUTES } from "@/config";
-import { ProjectTier, getProject } from "@/content/projects";
+import {
+  ProjectTier,
+  getProject,
+  useEnumLabels,
+  useLocalizedProject,
+} from "@/content/projects";
 
 export default function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
-  const project = getProject(slug);
+  const project = useLocalizedProject(getProject(slug));
   const t = useT();
+  const labels = useEnumLabels();
 
   const sectionIds = useMemo(
     () => project?.narrative.map((section) => section.id) ?? [],
@@ -59,7 +65,7 @@ export default function ProjectPage() {
             {t("project.back")}
           </LocaleLink>
 
-          <Eyebrow className="mb-3">{project.track}</Eyebrow>
+          <Eyebrow className="mb-3">{labels.track(project.track)}</Eyebrow>
           <h1 className="type-display max-w-3xl text-4xl text-ink sm:text-5xl">
             {project.title}
           </h1>
@@ -72,11 +78,11 @@ export default function ProjectPage() {
           <MetaBlock project={project} />
         </FadeLift>
 
-        <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,29rem)] lg:gap-14">
           <NarrativeColumn sections={project.narrative} />
 
           <div className="order-first lg:order-none">
-            <StickyPane>
+            <StickyPane tilted={project.tier !== ProjectTier.Full}>
               {project.tier === ProjectTier.Full ? (
                 <ProjectVisual
                   layers={layers}
@@ -84,7 +90,11 @@ export default function ProjectPage() {
                   caption={project.title}
                 />
               ) : (
-                <MediaPane videoURL={project.videoURL} title={project.title} />
+                <MediaPane
+                  videoURL={project.videoURL}
+                  imageURL={project.imageURL}
+                  title={project.title}
+                />
               )}
             </StickyPane>
           </div>

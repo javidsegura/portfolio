@@ -13,11 +13,13 @@ import { AmbientBackdrop } from "@/components/layout/AmbientBackdrop";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { FilterBar } from "@/components/projects/FilterBar";
 import {
+  Organizations,
   EMPTY_FILTERS,
   ProjectCategories,
   ProjectTrack,
   TechStackCategories,
   filterProjects,
+  useLocalizedProjects,
   type ProjectFilters,
 } from "@/content/projects";
 
@@ -34,31 +36,25 @@ export default function ProjectsIndexPage() {
       category:
         (params.get("domain") as ProjectCategories) ?? ProjectCategories.All,
       tech: (params.get("tech") as TechStackCategories) ?? TechStackCategories.All,
+      // Also set by clicking an organisation logo in the homepage cloud.
+      org: (params.get("org") as Organizations) ?? Organizations.All,
       papersOnly: params.get("papers") === "1",
     }),
     [params],
   );
 
-  // The org axis has no visible control: it is set by clicking an organisation
-  // logo (hero cloud), and cleared with the ordinary "clear filters" action.
-  const orgId = params.get("org");
-
-  const results = useMemo(() => {
-    const base = filterProjects(filters);
-    if (!orgId) return base;
-    return base.filter((project) => project.orgIds?.includes(orgId));
-  }, [filters, orgId]);
-
+  const matches = useMemo(() => filterProjects(filters), [filters]);
+  const results = useLocalizedProjects(matches);
   const isDirty = PARAM_KEYS.some((key) => params.has(key));
 
-  const handleChange = (next: ProjectFilters, keepOrg = true) => {
+  const handleChange = (next: ProjectFilters) => {
     const updated = new URLSearchParams();
     if (next.track !== ProjectTrack.All) updated.set("track", next.track);
     if (next.category !== ProjectCategories.All)
       updated.set("domain", next.category);
     if (next.tech !== TechStackCategories.All) updated.set("tech", next.tech);
+    if (next.org !== Organizations.All) updated.set("org", next.org);
     if (next.papersOnly) updated.set("papers", "1");
-    if (keepOrg && orgId) updated.set("org", orgId);
     setParams(updated, { replace: true });
   };
 
@@ -76,7 +72,7 @@ export default function ProjectsIndexPage() {
           onChange={handleChange}
           resultCount={results.length}
           isDirty={isDirty}
-          onClear={() => handleChange(EMPTY_FILTERS, false)}
+          onClear={() => handleChange(EMPTY_FILTERS)}
         />
 
         {results.length === 0 ? (
@@ -85,7 +81,8 @@ export default function ProjectsIndexPage() {
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-4 py-10 md:grid-cols-2 lg:grid-cols-3">
-            {results.map((project, index) => (
+            {results
+              .map((project, index) => (
               <ProjectCard
                 key={project.slug}
                 project={project}

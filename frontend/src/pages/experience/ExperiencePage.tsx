@@ -19,6 +19,7 @@ import { CareerGlobe } from "@/components/experience/globe/CareerGlobe";
 import {
   CAREER_MILESTONES,
   EXPERIENCE_ENTRIES,
+  useLocalizedMilestones,
   type ExperienceEntry,
 } from "@/content/experience";
 
@@ -26,6 +27,7 @@ export default function ExperiencePage() {
   usePageView("experience");
   const t = useT();
   const showGlobe = useWebGLSupport();
+  const milestones = useLocalizedMilestones();
 
   const [activeMilestoneId, setActiveMilestoneId] = useState("segovia-madrid");
   const activeIndex = Math.max(
@@ -75,8 +77,8 @@ export default function ExperiencePage() {
               />
             ) : (
               <FadeLift>
-                <Eyebrow className="mb-4">Geography</Eyebrow>
-                <MilestoneList milestones={CAREER_MILESTONES} />
+                <Eyebrow className="mb-4">{t("experience.geography")}</Eyebrow>
+                <MilestoneList milestones={milestones} />
               </FadeLift>
             )}
           </aside>

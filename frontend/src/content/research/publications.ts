@@ -18,6 +18,15 @@ export const PUBLICATIONS: Publication[] = [
     year: "2026",
     kind: "talk",
   },
+  {
+    id: "sola-scientia",
+    title:
+      "Sola Scientia Nos Liberabit: school dropout in the Canary Islands through open data",
+    venue: "EduCaixa Big Data Challenge, finalist, presented in Santa Clara University, Silicon Valley",
+    year: "2022",
+    kind: "talk",
+    link: "https://sites.google.com/heidelbergschule.com/soloscientialiberabitnos-en/intro?authuser=0",
+  },
 ];
 
 export interface Affiliation {
@@ -36,7 +45,7 @@ export const AFFILIATIONS: Affiliation[] = [
   {
     id: "radical",
     name: "RADICAL, Rutgers University",
-    detail: "FlowGentic in production use on the IMPRESS project",
+    detail: "Collaborated for the usage of FlowGentic on the IMPRESS project",
   },
   {
     id: "ncsa",

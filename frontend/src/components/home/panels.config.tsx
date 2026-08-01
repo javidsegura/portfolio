@@ -16,8 +16,9 @@ import projectsBg from "@/assets/home-panels/projects.png";
 
 export interface HomePanel {
   id: string;
-  title: string;
-  description: string;
+  /** i18n keys, resolved at render time so the panels follow the locale. */
+  titleKey: string;
+  descKey: string;
   to: string;
   Icon: LucideIcon;
   image: string | null;
@@ -26,32 +27,32 @@ export interface HomePanel {
 export const HOME_PANELS: HomePanel[] = [
   {
     id: "research",
-    title: "Research",
-    description: "PASC26, the thesis, and the labs the work runs with.",
+    titleKey: "panel.research.title",
+    descKey: "panel.research.desc",
     to: ROUTES.research,
     Icon: FlaskConical,
     image: researchBg,
   },
   {
     id: "projects",
-    title: "Projects",
-    description: "Nine systems, filterable by stack and kind of work.",
+    titleKey: "panel.projects.title",
+    descKey: "panel.projects.desc",
     to: ROUTES.projects,
     Icon: LayoutGrid,
     image: projectsBg,
   },
   {
     id: "experience",
-    title: "Experience",
-    description: "Citi, NSF supercomputing and IE, on an interactive globe.",
+    titleKey: "panel.experience.title",
+    descKey: "panel.experience.desc",
     to: ROUTES.experience,
     Icon: Globe2,
     image: experienceBg,
   },
   {
     id: "about",
-    title: "About Me",
-    description: "Who I am beyond the repos.",
+    titleKey: "panel.about.title",
+    descKey: "panel.about.desc",
     to: ROUTES.about,
     Icon: User,
     image: portrait,

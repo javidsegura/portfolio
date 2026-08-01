@@ -12,6 +12,8 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LocaleLink } from "@/components/primitives";
 import { FadeLift } from "@/components/motion/FadeLift";
+import { useT } from "@/providers/LanguageProvider";
+import type { TranslationKey } from "@/content/i18n";
 import { HOME_PANELS, type HomePanel } from "./panels.config";
 
 function PanelBackground({ panel, lit }: { panel: HomePanel; lit: boolean }) {
@@ -62,6 +64,8 @@ function SectionPanel({
   delay: number;
   lit: boolean;
 }) {
+  const t = useT();
+
   return (
     <FadeLift delay={delay} className="h-full min-w-0">
       <LocaleLink
@@ -88,7 +92,7 @@ function SectionPanel({
             className="type-title text-xl text-ink transition-transform duration-500
                        ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-0.5 sm:text-2xl"
           >
-            {panel.title}
+            {t(panel.titleKey as TranslationKey)}
           </h2>
           <p
             className={cn(
@@ -96,7 +100,7 @@ function SectionPanel({
               lit ? "opacity-100" : "opacity-70",
             )}
           >
-            {panel.description}
+            {t(panel.descKey as TranslationKey)}
           </p>
         </div>
       </LocaleLink>

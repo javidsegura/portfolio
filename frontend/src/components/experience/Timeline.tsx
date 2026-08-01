@@ -4,8 +4,18 @@ import { FadeLift } from "@/components/motion/FadeLift";
 import { ArrowLink, Chip } from "@/components/primitives";
 import { ROUTES } from "@/config";
 import { useT } from "@/providers/LanguageProvider";
-import { EXPERIENCE_ENTRIES, type ExperienceEntry } from "@/content/experience";
-import { getProject } from "@/content/projects";
+import {
+  useLocalizedExperience,
+  type ExperienceEntry,
+} from "@/content/experience";
+import { getProject, useLocalizedProject } from "@/content/projects";
+
+/** Own component so the localisation hook is not called inside a loop. */
+function RelatedProjectLink({ slug }: { slug: string }) {
+  const project = useLocalizedProject(getProject(slug));
+  if (!project) return null;
+  return <ArrowLink to={ROUTES.project(slug)}>{project.title}</ArrowLink>;
+}
 
 interface TimelineProps {
   /** Milestone currently focused on the globe; matching entries highlight. */
@@ -21,10 +31,11 @@ interface TimelineProps {
  */
 export function Timeline({ activeMilestoneId, onEntrySelect }: TimelineProps) {
   const t = useT();
+  const entries = useLocalizedExperience();
 
   return (
     <ol className="relative border-l border-line">
-      {EXPERIENCE_ENTRIES.map((entry) => {
+      {entries.map((entry) => {
         const isActive =
           Boolean(entry.milestoneId) && entry.milestoneId === activeMilestoneId;
         const isLocatable = Boolean(entry.milestoneId && onEntrySelect);
@@ -75,15 +86,9 @@ export function Timeline({ activeMilestoneId, onEntrySelect }: TimelineProps) {
                         {t("experience.related")}
                       </p>
                       <div className="flex flex-wrap gap-x-5 gap-y-2">
-                        {entry.projectSlugs.map((slug) => {
-                          const project = getProject(slug);
-                          if (!project) return null;
-                          return (
-                            <ArrowLink key={slug} to={ROUTES.project(slug)}>
-                              {project.title}
-                            </ArrowLink>
-                          );
-                        })}
+                        {entry.projectSlugs.map((slug) => (
+                          <RelatedProjectLink key={slug} slug={slug} />
+                        ))}
                       </div>
                     </div>
                   )}
@@ -96,7 +101,7 @@ export function Timeline({ activeMilestoneId, onEntrySelect }: TimelineProps) {
                       onClick={(event) => event.stopPropagation()}
                       className="group mt-3 inline-flex items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-ink"
                     >
-                      Reference
+                      {t("experience.reference")}
                       <ArrowUpRight
                         size={13}
                         className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

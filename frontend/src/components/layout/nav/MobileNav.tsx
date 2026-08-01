@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { PRIMARY_NAV, ROUTES, SITE, UTILITY_NAV } from "@/config";
+import { PRIMARY_NAV, ROUTES, UTILITY_NAV } from "@/config";
 import { useLanguage } from "@/providers/LanguageProvider";
+import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { LocaleLink } from "@/components/primitives";
 import { CommandTrigger } from "./CommandTrigger";
 import { LanguageToggle } from "./LanguageToggle";
@@ -14,11 +15,12 @@ interface MobileNavProps {
 
 export function MobileNavBar({ isOpen, setIsOpen }: MobileNavProps) {
   const { t } = useLanguage();
+  const identity = useSiteIdentity();
 
   return (
     <div className="flex w-full items-center justify-between">
       <LocaleLink to={ROUTES.home} className="type-title text-sm text-ink">
-        {SITE.shortName}
+        {identity.shortName}
       </LocaleLink>
 
       <div className="flex items-center gap-3">

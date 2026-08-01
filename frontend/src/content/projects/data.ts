@@ -7,6 +7,7 @@
  */
 
 import {
+  Organizations,
   ProjectCategories,
   ProjectStatus,
   ProjectTier,
@@ -14,6 +15,9 @@ import {
   TechStackCategories,
 } from "./enums";
 import type { Project } from "./types";
+
+import efficient_classifer from "@/assets/projects/efficient_classifier.png";
+import casino_mines_video from "@/assets/projects/casino_mines.mp4";
 
 export const PROJECTS: Project[] = [
   {
@@ -37,7 +41,7 @@ export const PROJECTS: Project[] = [
       TechStackCategories.Radical_Asyncflow,
       TechStackCategories.Linux,
     ],
-    orgIds: ["nsf", "rutgers"],
+    orgIds: [Organizations.NSF, Organizations.Rutgers],
     featured: true,
     hasPaper: false,
     links: {
@@ -80,56 +84,13 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: "binderflow-thesis",
-    title: "BinderFlow",
-    tagline:
-      "Portfolio-optimizing agentic scientific workflows across heterogeneous HPC resources.",
-    categories: [ProjectCategories.AI, ProjectCategories.HPC],
-    track: ProjectTrack.Research,
-    status: ProjectStatus.Active,
-    tier: ProjectTier.Full,
-    description:
-      "Thesis work extending FlowGentic into scheduling agentic scientific workflows as a portfolio-optimization problem over heterogeneous compute.",
-    impact:
-      "Validated on a protein-binder-design pipeline. Full treatment of the argument lives in the thesis essay.",
-    role: "Author",
-    date: "2026 — 2027",
-    techstack: [
-      TechStackCategories.Python,
-      TechStackCategories.Radical_Asyncflow,
-      TechStackCategories.Linux,
-    ],
-    orgIds: ["ie", "nsf", "rutgers"],
-    featured: true,
-    hasPaper: false,
-    links: {},
-    narrative: [
-      {
-        id: "premise",
-        heading: "Premise",
-        body: [
-          "Agentic scientific workflows generate work whose cost and value are not known before it runs. Scheduling that work well is closer to allocating a portfolio under uncertainty than to filling a queue.",
-        ],
-        draft: true,
-      },
-      {
-        id: "validation",
-        heading: "Validation",
-        body: [
-          "The approach is evaluated on a protein-binder-design pipeline running across heterogeneous HPC resources.",
-        ],
-        draft: true,
-      },
-    ],
-  },
-  {
     slug: "efficient-classifier",
     title: "Efficient Classifier",
     tagline: "An enterprise ML framework for tabular classification, published to PyPI.",
     categories: [ProjectCategories.AI],
     track: ProjectTrack.Research,
     status: ProjectStatus.Shipped,
-    tier: ProjectTier.Full,
+    tier: ProjectTier.Simple,
     description:
       "Enterprise ML framework for tabular classification with automated hyperparameter tuning, LIME interpretability, and CI/CD",
     impact:
@@ -145,7 +106,7 @@ export const PROJECTS: Project[] = [
       TechStackCategories.Numpy,
       TechStackCategories.Linux,
     ],
-    orgIds: ["ie"],
+    orgIds: [Organizations.IE],
     featured: true,
     hasPaper: true,
     links: {
@@ -154,6 +115,7 @@ export const PROJECTS: Project[] = [
         "https://drive.google.com/drive/u/1/folders/1GksAEhtbiqzj-pGVJixrn35E6DRu44gK",
       deepDive: "https://github.com/javidsegura/efficient-classifier#documentation",
     },
+    imageURL: efficient_classifer,
     narrative: [
       {
         id: "problem",
@@ -176,6 +138,70 @@ export const PROJECTS: Project[] = [
         heading: "Results",
         body: [
           "On a cybersecurity dataset of over 50,000 rows the framework reached a 92% F1-score, two points above the baseline.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "sola-scientia",
+    title: "Sola Scientia Nos Liberabit",
+    tagline:
+      "A data investigation into why the Canary Islands lose a student every five minutes.",
+    categories: [ProjectCategories.Data_Analysis],
+    track: ProjectTrack.Research,
+    status: ProjectStatus.Shipped,
+    tier: ProjectTier.Simple,
+    description:
+      "Big data investigation into school dropout in the Canary Islands, built for the EduCaixa Big Data Challenge 2022: open-government datasets analysed and published as an interactive site of long-form reporting and Infogram visualisations",
+    impact:
+      "Finalist among international teams (under 0.02% acceptance); presented in Silicon Valley with workshops run by Google and Apple employees and visits to Stanford and Berkeley",
+    role: "Team Lead & Data Analyst",
+    date: "2022 — 2023",
+    techstack: [
+      TechStackCategories.Open_Data,
+      TechStackCategories.Infogram,
+      TechStackCategories.Google_Sites,
+    ],
+    orgIds: [Organizations.EduCaixa],
+    featured: false,
+    hasPaper: true,
+    links: {
+      deepDive:
+        "https://sites.google.com/heidelbergschule.com/soloscientialiberabitnos-en/intro?authuser=0",
+      paper:
+        "https://sites.google.com/heidelbergschule.com/soloscientialiberabitnos-en/intro?authuser=0",
+    },
+    videoURL: "https://youtu.be/NiPHsJHBiUg",
+    narrative: [
+      {
+        id: "problem",
+        heading: "The islands with the best climate, and the worst retention",
+        body: [
+          "The Canary Islands are known abroad for beaches and weather, and the economy runs on the tourism that follows. Underneath that, the archipelago carries the highest rate of NEETs in Spain, young people neither studying nor working, at 23%. One in four classmates leaves school and does not go on to work.",
+          "The team of three chose UN Sustainable Development Goal 4, quality education, and set out to show the side of the islands that the tourism figures hide.",
+        ],
+      },
+      {
+        id: "data",
+        heading: "What the open data showed",
+        body: [
+          "We pulled public datasets on poverty against education, dropout history, bilingual enrolment by island, regional education budgets and stated reasons for studying, then rebuilt each one as an interactive Infogram chart with a written explanation.",
+          "Two findings shaped the argument. Education pays off along several axes at once: half the responses pointed to self-realisation, 65% to wider social opportunity, 23% to earnings and lifestyle. And progress is real but uneven, with roughly a third of Canarians now speaking a second language, concentrated heavily in Gran Canaria and Tenerife.",
+        ],
+      },
+      {
+        id: "output",
+        heading: "Publishing it",
+        body: [
+          "The output was a site rather than a slide deck, structured in versions: the framing piece, a long-form news report written as a newspaper feature, a breakdown of the five Vs of big data applied to our own sources, and a full bibliography.",
+          "The Latin title, roughly \"only knowledge will free us\", carried the argument: the way out of the dropout cycle is the education the islands are not yet reliably providing.",
+        ],
+      },
+      {
+        id: "outcome",
+        heading: "Outcome",
+        body: [
+          "The project reached the final of the EduCaixa Big Data Challenge, an international competition with an acceptance rate under 0.02%, and the team presented the findings in Silicon Valley, with workshops led by Google and Apple employees and visits to Stanford and Berkeley.",
         ],
       },
     ],
@@ -439,6 +465,7 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/javidsegura/CasinoMines",
       paper: "https://github.com/javidsegura/CasinoMines/blob/main/docs/MathOfGame.ipynb",
     },
+    videoURL: casino_mines_video,
     narrative: [
       {
         id: "overview",
