@@ -7,6 +7,7 @@ export enum ProjectCategories {
   Quantitative_Finance = "Quantitative Finance",
   HPC = "HPC",
   Cybersecurity = "Cybersecurity",
+  Data_Analysis = "Data Analysis",
 }
 
 /**
@@ -24,6 +25,21 @@ export enum ProjectStatus {
   Active = "Active",
   Shipped = "Shipped",
   Archived = "Archived",
+}
+
+/**
+ * Organisations a piece of work was done with. Values are the ids used in URLs
+ * (`/projects?org=nsf`) and as the keys of the affiliation-logo registry, so
+ * they must stay lowercase and stable.
+ */
+export enum Organizations {
+  All = "All",
+  Citi = "citi",
+  NSF = "nsf",
+  IE = "ie",
+  Rutgers = "rutgers",
+  Michigan = "umich",
+  EduCaixa = "laCaixa",
 }
 
 /**
@@ -72,4 +88,7 @@ export enum TechStackCategories {
   Streamlit = "Streamlit",
   Docker = "Docker",
   Libpcap = "libpcap",
+  Infogram = "Infogram",
+  Google_Sites = "Google Sites",
+  Open_Data = "Open Data",
 }

@@ -5,6 +5,8 @@
  * through them as the reader moves down the timeline.
  */
 
+import { Organizations } from "@/content/projects/enums";
+
 export interface CareerMilestone {
   id: string;
   city: string;
@@ -14,8 +16,8 @@ export interface CareerMilestone {
   year: string;
   label: string;
   detail: string;
-  /** Affiliation ids whose logos mark this point on the globe. */
-  orgIds: string[];
+  /** Organisations whose logos mark this point on the globe. */
+  orgIds: Organizations[];
   lat: number;
   lon: number;
   /** True while the copy is a placeholder awaiting real text. */
@@ -44,7 +46,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     label: "EduCaixa The Challenge",
     detail:
       "Selected among international teams to present big data research, with workshops by Google, Apple and Stanford.",
-    orgIds: ["laCaixa"],
+    orgIds: [Organizations.EduCaixa],
     lat: 37.4419,
     lon: -122.143,
   },
@@ -56,7 +58,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     year: "2023 — 2027",
     label: "IE University",
     detail: "BSc Computer Science & AI, Dean's List.",
-    orgIds: ["ie"],
+    orgIds: [Organizations.IE],
     lat: 40.9429,
     lon: -4.1088,
   },
@@ -69,7 +71,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     label: "Citi, Software Engineering Intern",
     detail:
       "Software engineering internship on Citi's infrastructure team, at the Warsaw technology hub.",
-    orgIds: ["citi"],
+    orgIds: [Organizations.Citi],
     lat: 52.2297,
     lon: 21.0122,
   },
@@ -82,7 +84,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     label: "PASC26",
     detail:
       "Presented FlowGentic, the HPC middleware built with STRIDE Research Labs and Rutgers' RADICAL lab under NSF's ACCESS programme.",
-    orgIds: ["nsf", "rutgers"],
+    orgIds: [Organizations.NSF, Organizations.Rutgers],
     lat: 46.948,
     lon: 7.4474,
   },
@@ -94,7 +96,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     year: "Fall 2026",
     label: "University of Michigan",
     detail: "Exchange semester.",
-    orgIds: ["umich"],
+    orgIds: [Organizations.Michigan],
     lat: 42.2808,
     lon: -83.743,
   },

@@ -7,7 +7,8 @@
 import { Suspense, lazy, useState } from "react";
 import { Loader2, Minus, Plus } from "lucide-react";
 import { useWebGLSupport } from "@/hooks/useWebGLSupport";
-import { CAREER_MILESTONES } from "@/content/experience/milestones";
+import { useT } from "@/providers/LanguageProvider";
+import { useLocalizedMilestones } from "@/content/experience";
 import { getAffiliationMark } from "@/components/brand/affiliationMarks";
 import { COUNTRY_FLAGS } from "@/components/brand/FlagIcon";
 import { Chip } from "@/components/primitives";
@@ -26,8 +27,10 @@ const STEP = 0.6;
 
 export function CareerGlobe({ activeIndex, onSelect }: CareerGlobeProps) {
   const canRender3D = useWebGLSupport();
+  const t = useT();
+  const milestones = useLocalizedMilestones();
   const [distance, setDistance] = useState(3.3);
-  const milestone = CAREER_MILESTONES[activeIndex];
+  const milestone = milestones[activeIndex];
 
   const zoom = (delta: number) =>
     setDistance((current) =>
@@ -130,7 +133,7 @@ export function CareerGlobe({ activeIndex, onSelect }: CareerGlobeProps) {
       )}
 
       <p className="mt-3 text-center text-xs text-ink-faint">
-        Drag to spin · click a dot, or a timeline entry, to travel
+        {t("experience.globeHint")}
       </p>
     </div>
   );

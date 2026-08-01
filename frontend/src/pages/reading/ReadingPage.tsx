@@ -54,7 +54,7 @@ export default function ReadingPage() {
                             entry.title
                           )}
                         </p>
-                        {entry.draft && <Chip>Placeholder</Chip>}
+                        {entry.draft && <Chip>{t("reading.placeholder")}</Chip>}
                       </div>
                       <p className="mt-1 text-sm text-ink-muted">
                         {entry.author}

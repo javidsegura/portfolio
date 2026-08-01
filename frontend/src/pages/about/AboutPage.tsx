@@ -1,16 +1,18 @@
 import { usePageView } from "@/hooks/useAnalytics";
+import { useSiteIdentity } from "@/hooks/useSiteIdentity";
 import { useT } from "@/providers/LanguageProvider";
 import { Container } from "@/components/layout/Container";
 import { AmbientBackdrop } from "@/components/layout/AmbientBackdrop";
 import { FadeLift } from "@/components/motion/FadeLift";
 import { ArrowLink, Eyebrow, Prose } from "@/components/primitives";
-import { EXTERNAL_LINKS, ROUTES, SITE } from "@/config";
+import { EXTERNAL_LINKS, ROUTES } from "@/config";
 import { CORE_TECH_MARKS } from "@/components/brand/techIcons";
 import profilePic from "@/assets/about-me/profile-pic.png";
 
 export default function AboutPage() {
   usePageView("about");
   const t = useT();
+  const identity = useSiteIdentity();
 
   return (
     <>
@@ -20,17 +22,17 @@ export default function AboutPage() {
           <FadeLift>
             <Eyebrow className="mb-3">{t("about.title")}</Eyebrow>
             <h1 className="type-display text-4xl text-ink sm:text-5xl">
-              {SITE.shortName}
+              {identity.name}
             </h1>
             <p className="type-body mt-3 text-ink-muted">
-              {SITE.role} · {SITE.location}
+              {identity.role} · {identity.location}
             </p>
           </FadeLift>
 
           <FadeLift delay={80}>
             <img
               src={profilePic}
-              alt={SITE.name}
+              alt={identity.name}
               className="iso-object-soft w-32 rounded-2xl border border-line object-cover sm:w-40"
             />
           </FadeLift>
@@ -38,29 +40,14 @@ export default function AboutPage() {
 
         <FadeLift delay={120} className="pt-12">
           <Prose>
-            <p>
-              I work on the infrastructure layer between agentic AI and the
-              machines large enough to run it. Most of my time goes to
-              FlowGentic, an open-source framework that lets LangGraph, CrewAI
-              and AG2 agent systems run on HPC schedulers, which researchers at
-              Rutgers' RADICAL group use on the NCSA Delta supercomputer.
-            </p>
-            <p>
-              I am in my final year of Computer Science and AI at IE University
-              in Madrid, currently interning on Citi's infrastructure team, and
-              heading to the University of Michigan on exchange in fall 2026.
-              I graduate in 2027.
-            </p>
-            <p>
-              My thesis extends FlowGentic into scheduling agentic scientific
-              workflows as a portfolio-optimization problem across heterogeneous
-              HPC resources. The work was presented at PASC26 in Bern.
-            </p>
+            <p>{t("about.bio1")}</p>
+            <p>{t("about.bio2")}</p>
+            <p>{t("about.bio3")}</p>
           </Prose>
         </FadeLift>
 
         <FadeLift delay={160} className="pt-12">
-          <Eyebrow className="mb-4">Core stack</Eyebrow>
+          <Eyebrow className="mb-4">{t("about.coreStack")}</Eyebrow>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-4">
             {CORE_TECH_MARKS.map(({ name, Icon }) => (
               <li key={name} className="group relative">
@@ -86,7 +73,7 @@ export default function AboutPage() {
         </FadeLift>
 
         <FadeLift delay={200} className="py-12">
-          <Eyebrow className="mb-3">Elsewhere</Eyebrow>
+          <Eyebrow className="mb-3">{t("about.elsewhere")}</Eyebrow>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <ArrowLink to={EXTERNAL_LINKS.github} external>
               GitHub

@@ -1,7 +1,12 @@
 /** Lookups over the project list. Keeps components free of array plumbing. */
 
 import { PROJECTS } from "./data";
-import { ProjectCategories, ProjectTrack, TechStackCategories } from "./enums";
+import {
+  Organizations,
+  ProjectCategories,
+  ProjectTrack,
+  TechStackCategories,
+} from "./enums";
 import type { Project } from "./types";
 
 const BY_SLUG = new Map(PROJECTS.map((p) => [p.slug, p]));
@@ -22,6 +27,7 @@ export interface ProjectFilters {
   category: ProjectCategories;
   track: ProjectTrack;
   tech: TechStackCategories;
+  org: Organizations;
   papersOnly: boolean;
 }
 
@@ -29,6 +35,7 @@ export const EMPTY_FILTERS: ProjectFilters = {
   category: ProjectCategories.All,
   track: ProjectTrack.All,
   tech: TechStackCategories.All,
+  org: Organizations.All,
   papersOnly: false,
 };
 
@@ -42,8 +49,11 @@ export function filterProjects(filters: ProjectFilters): Project[] {
     const techMatch =
       filters.tech === TechStackCategories.All ||
       project.techstack.includes(filters.tech);
+    const orgMatch =
+      filters.org === Organizations.All ||
+      Boolean(project.orgIds?.includes(filters.org));
     const paperMatch = !filters.papersOnly || project.hasPaper;
-    return categoryMatch && trackMatch && techMatch && paperMatch;
+    return categoryMatch && trackMatch && techMatch && orgMatch && paperMatch;
   });
 }
 
@@ -52,6 +62,18 @@ export function getUsedTech(): string[] {
   const used = new Set<string>();
   PROJECTS.forEach((p) => p.techstack.forEach((t) => used.add(t)));
   return [...used].sort();
+}
+
+/**
+ * Organisation ids attached to at least one project.
+ *
+ * Returned as a set so callers can order them however they like — the filter
+ * bar walks the canonical affiliation list rather than sorting alphabetically.
+ */
+export function getUsedOrgIds(): Set<Organizations> {
+  const used = new Set<Organizations>();
+  PROJECTS.forEach((p) => p.orgIds?.forEach((id) => used.add(id)));
+  return used;
 }
 
 export interface AdjacentProjects {

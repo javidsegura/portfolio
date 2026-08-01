@@ -12,9 +12,10 @@ import { AmbientBackdrop } from "@/components/layout/AmbientBackdrop";
 import { Container } from "@/components/layout/Container";
 import { FadeLift } from "@/components/motion/FadeLift";
 import { Eyebrow } from "@/components/primitives";
+import { useT } from "@/providers/LanguageProvider";
 
 const STORAGE_KEY = "wip-sections-unlocked";
-const PASSWORD = "123";
+const PASSWORD = "123-456";
 
 function readUnlocked(): boolean {
   try {
@@ -25,6 +26,7 @@ function readUnlocked(): boolean {
 }
 
 export function MaintenanceGate({ children }: { children: ReactNode }) {
+  const t = useT();
   const [unlocked, setUnlocked] = useState(readUnlocked);
   const [value, setValue] = useState("");
   const [rejected, setRejected] = useState(false);
@@ -56,12 +58,10 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
               <Lock size={17} className="text-ink" />
             </span>
 
-            <Eyebrow className="mb-2">Under construction</Eyebrow>
-            <h1 className="type-title text-xl text-ink">
-              This section is not ready yet
-            </h1>
+            <Eyebrow className="mb-2">{t("gate.eyebrow")}</Eyebrow>
+            <h1 className="type-title text-xl text-ink">{t("gate.title")}</h1>
             <p className="type-body mt-2 text-sm text-ink-muted">
-              If Javier gave you the password, enter it below.
+              {t("gate.body")}
             </p>
 
             <form onSubmit={handleSubmit} className="mt-6 flex gap-2">
@@ -72,8 +72,8 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
                   setValue(event.target.value);
                   setRejected(false);
                 }}
-                placeholder="Password"
-                aria-label="Password"
+                placeholder={t("gate.placeholder")}
+                aria-label={t("gate.placeholder")}
                 autoFocus
                 className="w-full rounded-full border border-line bg-paper px-4 py-2 text-sm
                            text-ink outline-none placeholder:text-ink-faint focus:border-amber"
@@ -84,13 +84,13 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
                            text-paper-raised transition-transform duration-200 hover:-translate-y-0.5
                            motion-reduce:hover:translate-y-0"
               >
-                Open
+                {t("gate.submit")}
               </button>
             </form>
 
             {rejected && (
               <p className="mt-3 text-xs text-destructive">
-                That is not it.
+                {t("gate.rejected")}
               </p>
             )}
           </div>

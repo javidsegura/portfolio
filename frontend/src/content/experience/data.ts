@@ -30,7 +30,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     title: "Software Engineering Analyst, Intern",
     company: "Citi",
     description:
-      "Software Engineering Summer Intern on the Infrastructure team.",
+      "Software Engineering Summer Intern on the Infrastructure team at Citi's European Command Center.",
     date: "2026",
     imageUrl: citi_logo,
     contentLink:
@@ -39,27 +39,25 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
   },
   {
     id: "stride",
-    title: "HPC Research Intern, NSF Supercomputing",
+    title: "HPC Research Intern, NSF Supercomputing Allocation",
     company: "STRIDE Research Labs",
     description:
       "Designing HPC middleware for agent-based workflows on the NCSA Delta supercomputer through NSF's ACCESS program. Partnering with the RADICAL research lab at Rutgers University on the Integrated Machine-learning for Protein Structures at Scale (IMPRESS) project.",
     date: "Summer 2025 — Spring 2026",
     imageUrl: nsf_logo,
     contentLink: "https://github.com/stride-research/flowgentic",
-    projectSlugs: ["flowgentic", "binderflow-thesis"],
     milestoneId: "bern",
   },
   {
     id: "ie",
-    title: "Top of Class, Dean's List Recognition",
+    title: "Computer Science & AI Major, Top 5%",
     company: "IE University",
     description:
-      "96.3/100 GPA in Computer Science & AI, earning Dean's List honours and recognition as top performer in the School of Science & Technology across multiple semesters.",
+      "93.3/100 GPA in Computer Science & AI, earning Dean's List honours and recognition as top performer in the School of Science & Technology across multiple semesters.",
     date: "2023 — present",
     imageUrl: ie_logo,
     contentLink:
       "https://www.linkedin.com/feed/update/urn:li:activity:7352648632849838080/",
-    projectSlugs: ["efficient-classifier"],
     milestoneId: "segovia-madrid",
   },
   {
@@ -67,11 +65,12 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     title: "Silicon Valley Selection, EduCaixa The Challenge",
     company: "EduCaixa",
     description:
-      "Selected among international teams (under 0.02% acceptance) to conduct big data research on high-school dropout rates. Presented findings in Silicon Valley with workshops by Google, Apple and Stanford.",
+      "Selected among international teams (under 0.02% acceptance) to conduct big data research on high-school dropout rates. Presented findings in Silicon Valley with workshops by Google, Apple and visits Stanford and Berkeley.",
     date: "2023",
     imageUrl: laCaixa_logo,
     contentLink:
       "https://sites.google.com/heidelbergschule.com/soloscientialiberabitnos-en/intro?authuser=0",
+    projectSlugs: ["sola-scientia"],
     milestoneId: "silicon-valley",
   },
 ];

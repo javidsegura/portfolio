@@ -1,6 +1,7 @@
 /**
- * Visual pane for simple-tier projects: video or screenshot, same layout
- * skeleton as the full treatment. A CRUD app does not get a WebGL scene.
+ * Visual pane for simple-tier projects: video, still image, or the empty
+ * state, in that order of precedence. Same layout skeleton as the full
+ * treatment; a CRUD app does not get a WebGL scene.
  */
 
 import { ImageIcon } from "lucide-react";
@@ -8,10 +9,11 @@ import { getVideoEmbedUrl } from "@/lib/videoUtils";
 
 interface MediaPaneProps {
   videoURL?: string;
+  imageURL?: string;
   title: string;
 }
 
-export function MediaPane({ videoURL, title }: MediaPaneProps) {
+export function MediaPane({ videoURL, imageURL, title }: MediaPaneProps) {
   const embedUrl = videoURL ? getVideoEmbedUrl(videoURL) : null;
 
   if (embedUrl) {
@@ -38,12 +40,22 @@ export function MediaPane({ videoURL, title }: MediaPaneProps) {
     );
   }
 
+  if (imageURL) {
+    return (
+      <img
+        src={imageURL}
+        alt={title}
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+    );
+  }
+
   return (
     <div className="grid-plane-fine flex h-full w-full flex-col items-center justify-center gap-3 opacity-90">
       <ImageIcon size={22} className="text-ink-faint" />
       <p className="max-w-[16rem] text-center text-xs text-ink-faint">
-        Screenshot slot. Drop an image or video URL on the project record to
-        fill this pane.
+        No image available.
       </p>
     </div>
   );

@@ -8,7 +8,7 @@ import { LocaleLink, Chip } from "@/components/primitives";
 import { FadeLift } from "@/components/motion/FadeLift";
 import { ROUTES } from "@/config";
 import { getAffiliationMark } from "@/components/brand/affiliationMarks";
-import type { Project } from "@/content/projects";
+import { useEnumLabels, type Project } from "@/content/projects";
 
 interface ProjectCardProps {
   project: Project;
@@ -16,6 +16,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
+  const labels = useEnumLabels();
+
   return (
     <FadeLift delay={delay} className="min-w-0">
       <LocaleLink
@@ -27,7 +29,9 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
                    motion-reduce:hover:translate-y-0"
       >
         <div className="mb-2 flex items-start justify-between gap-3">
-          <p className="type-eyebrow text-ink-faint">{project.track}</p>
+          <p className="type-eyebrow text-ink-faint">
+            {labels.track(project.track)}
+          </p>
           {project.hasPaper && (
             <FileText size={15} className="shrink-0 text-ink-faint" />
           )}

@@ -5,14 +5,14 @@
 
 import type { IconType } from "react-icons";
 import {
-  SiC,
   SiDocker,
   SiFastapi,
+  SiKubernetes,
   SiLinux,
-  SiNvidia,
   SiPython,
   SiPytorch,
   SiReact,
+  SiSpringboot,
   SiTerraform,
   SiTypescript,
 } from "react-icons/si";
@@ -25,8 +25,8 @@ export interface TechMark {
 /** Ordered by how much of my time each one actually takes. */
 export const CORE_TECH_MARKS: TechMark[] = [
   { name: "Python", Icon: SiPython },
-  { name: "C / CUDA", Icon: SiC },
-  { name: "NVIDIA", Icon: SiNvidia },
+  { name: "Java / Spring Boot", Icon: SiSpringboot },
+  { name: "Kubernetes", Icon: SiKubernetes },
   { name: "Linux", Icon: SiLinux },
   { name: "PyTorch", Icon: SiPytorch },
   { name: "FastAPI", Icon: SiFastapi },

@@ -2,17 +2,24 @@ import { Container } from "@/components/layout/Container";
 import { FadeLift } from "@/components/motion/FadeLift";
 import { ArrowLink, Eyebrow, StatusDot } from "@/components/primitives";
 import { OrgCloud } from "@/components/depth/OrgCloud";
-import { CURRENT_STATUS, EXTERNAL_LINKS, ROUTES, SITE } from "@/config";
-import { useLanguage } from "@/providers/LanguageProvider";
+import { CURRENT_STATUS, EXTERNAL_LINKS, ROUTES } from "@/config";
+import { useSiteIdentity } from "@/hooks/useSiteIdentity";
+
+interface HeroProps {
+  /**
+   * Whether the organisation cloud sits beside the text. False on mobile,
+   * where the page renders it below the section panels instead.
+   */
+  showCloud?: boolean;
+}
 
 /**
  * Hero band: name on one line, one plain sentence, the availability badge and
- * links. The organisations I have worked with orbit as the cloud on the right,
- * which is also the page's credentials strip.
+ * links. On desktop the organisations I have worked with orbit as the cloud on
+ * the right, doubling as the page's credentials strip.
  */
-export function Hero() {
-  const { locale } = useLanguage();
-  const fullName = locale === "es" ? SITE.nameEs : SITE.name;
+export function Hero({ showCloud = true }: HeroProps) {
+  const identity = useSiteIdentity();
 
   return (
     <Container width="wide" className="pb-10 pt-10 sm:pt-14">
@@ -20,13 +27,13 @@ export function Hero() {
         <div className="min-w-0">
           <FadeLift>
             <Eyebrow className="mb-4">
-              {SITE.role} · {SITE.location}
+              {identity.role} · {identity.location}
             </Eyebrow>
           </FadeLift>
 
           <FadeLift delay={60}>
             <h1 className="type-display text-[clamp(2.2rem,5vw,4.3rem)] text-ink sm:whitespace-nowrap">
-              {fullName}
+              {identity.name}
             </h1>
           </FadeLift>
 
@@ -37,9 +44,9 @@ export function Hero() {
             </p>
             {/* LinkedIn-style compressed facts, one per audience. */}
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-faint">
-              CS &amp; AI @ IE University, Dean's List · SWE Intern @ Citi ·
-              NSF-funded HPC research with Rutgers · Open source running on NCSA
-              Delta · Michigan exchange '26
+              CS &amp; AI @ IE University / University of Michigan, Dean's List · SWE Intern @ Citi ·
+              ML & HPC research  · Open source running on NCSA
+              Delta 
             </p>
           </FadeLift>
 
@@ -67,9 +74,11 @@ export function Hero() {
           </FadeLift>
         </div>
 
-        <FadeLift delay={100} className="mx-auto shrink-0 lg:mx-0">
-          <OrgCloud className="w-64 sm:w-80 lg:w-[22rem]" />
-        </FadeLift>
+        {showCloud && (
+          <FadeLift delay={100} className="mx-auto shrink-0 lg:mx-0">
+            <OrgCloud className="w-64 sm:w-80 lg:w-[22rem]" />
+          </FadeLift>
+        )}
       </div>
     </Container>
   );

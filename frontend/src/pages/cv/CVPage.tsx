@@ -51,13 +51,13 @@ export default function CVPage() {
         </FadeLift>
 
         <FadeLift delay={80} className="border-t border-line py-8">
-          <Eyebrow className="mb-3">Now</Eyebrow>
+          <Eyebrow className="mb-3">{t("cv.now")}</Eyebrow>
           <p className="text-sm text-ink">{CURRENT_STATUS.label}</p>
           <p className="mt-1 text-sm text-ink-muted">{CURRENT_STATUS.detail}</p>
         </FadeLift>
 
         <FadeLift delay={120} className="border-t border-line py-8">
-          <Eyebrow className="mb-4">Experience</Eyebrow>
+          <Eyebrow className="mb-4">{t("cv.experience")}</Eyebrow>
           <ul className="space-y-5">
             {EXPERIENCE_ENTRIES.map((entry) => (
               <li key={entry.id}>
@@ -70,12 +70,12 @@ export default function CVPage() {
             ))}
           </ul>
           <div className="mt-5 no-print">
-            <ArrowLink to={ROUTES.experience}>Full timeline</ArrowLink>
+            <ArrowLink to={ROUTES.experience}>{t("cv.fullTimeline")}</ArrowLink>
           </div>
         </FadeLift>
 
         <FadeLift delay={160} className="border-t border-line py-8">
-          <Eyebrow className="mb-4">Selected work</Eyebrow>
+          <Eyebrow className="mb-4">{t("cv.selectedWork")}</Eyebrow>
           <ul className="space-y-5">
             {highlights.map((project) => (
               <li key={project.slug}>
@@ -90,12 +90,12 @@ export default function CVPage() {
             ))}
           </ul>
           <div className="mt-5 no-print">
-            <ArrowLink to={ROUTES.projects}>All projects</ArrowLink>
+            <ArrowLink to={ROUTES.projects}>{t("cv.allProjects")}</ArrowLink>
           </div>
         </FadeLift>
 
         <FadeLift delay={200} className="border-t border-line py-8 pb-24">
-          <Eyebrow className="mb-3">Contact</Eyebrow>
+          <Eyebrow className="mb-3">{t("cv.contact")}</Eyebrow>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <a
               href={`mailto:${SITE.email}`}

@@ -4,8 +4,8 @@ export const SITE = {
   name: "Javier Dominguez Segura",
   /** Spanish spelling, used on the /es mirror. */
   nameEs: "Javier Domínguez Segura",
-  shortName: "Javier Dominguez",
-  shortNameEs: "Javier Domínguez",
+  shortName: "Javier Dominguez Segura",
+  shortNameEs: "Javier Domínguez Segura",
   role: "CS & AI, IE University",
   tagline:
     "Middleware that lets agentic AI workflows run on HPC schedulers.",
@@ -26,7 +26,7 @@ export const EXTERNAL_LINKS = {
 
 /** The line that speaks directly to the primary audience. */
 export const CURRENT_STATUS = {
-  seeking: "Open to Fall '26 and Summer '27 internship opportunities",
+  seeking: "Open to new-graduate roles as early as Summer '27",
   label: "Software Engineering Intern, Citi Infrastructure",
   detail: "Michigan exchange, fall 2026. Graduating 2027.",
 } as const;

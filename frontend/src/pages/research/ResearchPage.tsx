@@ -33,15 +33,13 @@ export default function ResearchPage() {
           >
             <Eyebrow className="mb-3">{t("research.thesis")}</Eyebrow>
             <h2 className="type-title max-w-2xl text-2xl text-ink sm:text-3xl">
-              Portfolio-optimizing agentic scientific workflows across
-              heterogeneous HPC resources
+              {t("research.thesisTitle")}
             </h2>
             <p className="type-body measure mt-3 text-sm text-ink-muted">
-              A visual essay in six sections, with the maths available but not
-              mandatory.
+              {t("research.thesisBlurb")}
             </p>
             <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-ink">
-              Read the essay
+              {t("research.readEssay")}
               <ArrowUpRight
                 size={15}
                 className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -94,7 +92,9 @@ export default function ResearchPage() {
         </FadeLift>
 
         <div className="pb-16">
-          <ArrowLink to={ROUTES.projects}>Related project pages</ArrowLink>
+          <ArrowLink to={ROUTES.projects}>
+            {t("research.relatedProjects")}
+          </ArrowLink>
         </div>
       </Container>
     </>
