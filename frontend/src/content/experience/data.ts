@@ -30,7 +30,7 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
     title: "Software Engineering Analyst, Intern",
     company: "Citi",
     description:
-      "Software Engineering Summer Intern on the Infrastructure team at Citi's European Command Center.",
+      "Software Engineering Intern on Citi's Infrastructure team, shipping a production ETL pipeline to OpenShift ( ~100 hours/yr of saved manual work) and a Spring Boot/MongoDB/Grafana health-check dashboard.",
     date: "2026",
     imageUrl: citi_logo,
     contentLink:

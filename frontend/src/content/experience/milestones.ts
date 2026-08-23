@@ -70,7 +70,7 @@ export const CAREER_MILESTONES: CareerMilestone[] = [
     year: "2026",
     label: "Citi, Software Engineering Intern",
     detail:
-      "Software engineering internship on Citi's infrastructure team, at the Warsaw technology hub.",
+      "Software engineering internship on Citi's infrastructure team, at the bank's European Command",
     orgIds: [Organizations.Citi],
     lat: 52.2297,
     lon: 21.0122,
